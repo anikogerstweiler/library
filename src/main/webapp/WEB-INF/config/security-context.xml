@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans:beans xmlns:beans="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:p="http://www.springframework.org/schema/p" xmlns="http://www.springframework.org/schema/security"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd
+		http://www.springframework.org/schema/security http://www.springframework.org/schema/security/spring-security.xsd">
+
+<http pattern="/resources/**" security="none" />
+
+<!-- 	<beans:bean id="UserServiceImpl" class="com.epam.smvc.service.UserServiceImpl" /> -->
+	
+	<beans:bean id='bCryptPasswordEncoder' class='org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder'/> 
+<!-- 	<authentication-manager> -->
+<!-- 		<authentication-provider user-service-ref="dataSource"> -->
+<!-- 			<password-encoder ref="bCryptPasswordEncoder"/>  -->
+<!-- 		</authentication-provider> -->
+<!-- 	</authentication-manager> -->
+	
+	<authentication-manager>
+		<authentication-provider>
+		<jdbc-user-service data-source-ref="dataSource"/>
+			<!-- <password-encoder hash="bcrypt" /> -->
+		</authentication-provider>
+	
+	</authentication-manager>
+	
+	<http auto-config="true" use-expressions="true">
+		<intercept-url pattern="/login" access="isAnonymous()"/>
+		<intercept-url pattern="/loginFailed" access="isAnonymous()"/>
+		<intercept-url pattern="/register" access="isAnonymous()"/>
+		<intercept-url pattern="/**" access="hasRole('ROLE_USER')"/>
+		<form-login login-page="/login" authentication-failure-url="/loginFailed"  default-target-url="/register"/>
+	</http>
+	
+	<beans:bean id="dataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
+		<beans:property name="driverClassName" value="com.mysql.jdbc.Driver" />
+		<beans:property name="url" value="jdbc:mysql://localhost/spring-mvc" />
+		<beans:property name="username" value="root" />
+		<beans:property name="password" value="root" />
+	</beans:bean>
+	
+</beans:beans>

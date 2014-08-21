@@ -1,0 +1,169 @@
+body {
+	background-color: #e5e3db;
+	font-family: 'minion';
+	color: #555;
+	font-size: 14px;
+}
+
+.container {
+	width: 650px;
+	margin: 100px auto;
+}
+
+section {
+	border: 1px solid #ccc;
+	border-radius: 6px;
+}
+
+#menu {
+	width: 650px;
+	margin-bottom: 20px;
+	color: white;
+	font-family: 'minion';
+	font-size: 25px;
+	background-color: black;
+	border-radius: 6px;
+}
+
+#login {
+	width: 650px;
+	border-radius: 6px;
+}
+
+.column {
+	padding: 20px;
+	background-color: #E3FFE5;
+}
+
+h1 {
+	font-size: 50px;
+	color: white;
+	padding: 20px;
+}
+
+h2 {
+	font-size: 24px;
+	margin-bottom: 20px;
+	font-weight: bold;
+}
+
+.header {
+	background-image: url("wp.jpg");
+	height: 100px;
+}
+
+.footer {
+	background-image: url("wp.jpg");
+	height: 30px;
+	color: white;
+	padding-top: 10px;
+	padding-right: 10px;
+}
+
+#footer {
+	float: right;
+}
+
+/* form { */
+/* 	background-color: #f7f5ed; */
+/* 	padding: 10px; */
+/* 	border-radius: 3px; */
+/* } */
+label {
+	font-weight: bold;
+	margin-top: 10px;
+	margin-bottom: 5px;
+	text-align: left;
+}
+
+input, label, button {
+	line-height: 150%;
+	display: block;
+	width: 50%;
+}
+
+input {
+	height: 28px;
+}
+
+button {
+	margin-top: 20px;
+	border-radius: 5px;
+	height: 30px;
+	width: 100px;
+	background-color: white;
+	font-family: 'minion';
+	font-weight: bold;
+	color: #555;
+}
+
+.menulink {
+	color: #E3FFE5;
+	text-decoration: none;
+}
+
+.borrow {
+	font-family: 'minion';
+	color: #555;
+	float: right;
+}
+
+ul {
+	list-style-type: none;
+	margin: 0;
+	overflow: hidden;
+}
+
+li {
+	display: inline-block;
+	padding: 10px 5px;
+}
+
+small #author {
+	float: left;
+}
+
+p {
+	text-align: justify;
+	margin-top: 10px;
+	margin-bottom: 10px;
+}
+
+fieldset {
+	padding: 5px 10px;
+	/* 	background-color: #E3FFE5; */
+	/* 	border-radius: 5px; */
+	/* 	margin: 5px; */
+}
+
+hr:last_child {
+	visibility: hidden;
+}
+
+hr {
+	padding-right: 5px;
+	width: 95%;
+}
+
+.attributes {
+	background-color: #E3FFE5;
+	padding: 5px;
+	margin-top: 5px;
+}
+
+.attribute {
+	margin-left: 5px;
+	margin-right: 10px;
+}
+
+em {
+	font-weight: bold;
+}
+
+#search {
+	margin: 5px 10px;
+	float: right;
+	border-radius: 5px;
+	width: 200px;	
+/* 	background-color: #E3FFE5; */
+}
