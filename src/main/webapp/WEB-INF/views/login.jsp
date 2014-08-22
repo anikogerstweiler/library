@@ -18,14 +18,20 @@
 					<h1>Login</h1>
 				</div>
 				<div class="column">
-                    <label for="name"> Username </label>
-                    <input type="text" id="name" name="j_username">
+					<c:if test="${error == true}">
+						<label class="error">Wrong user name or password</label>
+					</c:if>
+					
+                    <label for="name" class="inputElement"> Username </label>
+                    <input type="text" id="name" name="j_username" class="inputElement">
                     
-                    <label for="pwd">Password</label>
-                    <input type="password" id="pwd" maxlength="4" name="j_password">
+                    <label for="pwd" class="inputElement">Password</label>
+                    <input type="password" id="pwd" maxlength="4" name="j_password" class="inputElement">
                     
-	                <button type="submit">Login</button>
-	                <input type="checkbox" name="_spring_security_remember_me"> Remember me
+	                <button type="submit" class="submit">Login</button>
+	                <label class="rememberme">
+	                	<input type="checkbox" name="_spring_security_remember_me">Remember me
+	                </label>
                 </div>
                 <div class="footer">
                 	<small id="footer">You don't have an account? <a href="/smvc/register" class="menulink">Register here</a></small>

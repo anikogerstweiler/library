@@ -7,6 +7,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import javax.persistence.Transient;
 
 @Entity
 @Table(name = "books")
@@ -28,6 +29,7 @@ public class Book {
 	@Column(name = "isbn")
 	private String isbn;
 
+	@Transient
 	@Column(name = "image")
 	private Blob image;
 	

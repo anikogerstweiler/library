@@ -7,7 +7,8 @@ body {
 
 .container {
 	width: 650px;
-	margin: 100px auto;
+/* 	margin: 100px auto; */
+	margin: auto;
 }
 
 section {
@@ -17,12 +18,12 @@ section {
 
 #menu {
 	width: 650px;
-	margin-bottom: 20px;
+	margin-bottom: 10px;
 	color: white;
 	font-family: 'minion';
 	font-size: 25px;
 	background-color: black;
-	border-radius: 6px;
+	border-radius: 0px;
 }
 
 #login {
@@ -64,11 +65,6 @@ h2 {
 	float: right;
 }
 
-/* form { */
-/* 	background-color: #f7f5ed; */
-/* 	padding: 10px; */
-/* 	border-radius: 3px; */
-/* } */
 label {
 	font-weight: bold;
 	margin-top: 10px;
@@ -76,14 +72,16 @@ label {
 	text-align: left;
 }
 
-input, label, button {
+.inputElement {
 	line-height: 150%;
 	display: block;
 	width: 50%;
+	height: 28px
 }
 
-input {
-	height: 28px;
+.rememberme, .submit {
+	display: block;
+	margin-top: 10px;
 }
 
 button {
@@ -100,18 +98,15 @@ button {
 .menulink {
 	color: #E3FFE5;
 	text-decoration: none;
+	list-style-type: none;
+	margin: 0;
+	overflow: hidden;
 }
 
 .borrow {
 	font-family: 'minion';
 	color: #555;
 	float: right;
-}
-
-ul {
-	list-style-type: none;
-	margin: 0;
-	overflow: hidden;
 }
 
 li {
@@ -131,9 +126,6 @@ p {
 
 fieldset {
 	padding: 5px 10px;
-	/* 	background-color: #E3FFE5; */
-	/* 	border-radius: 5px; */
-	/* 	margin: 5px; */
 }
 
 hr:last_child {
@@ -149,6 +141,7 @@ hr {
 	background-color: #E3FFE5;
 	padding: 5px;
 	margin-top: 5px;
+	display: block;
 }
 
 .attribute {
@@ -166,4 +159,43 @@ em {
 	border-radius: 5px;
 	width: 200px;	
 /* 	background-color: #E3FFE5; */
+}
+
+.magnifyingglass {
+	width: 20px; 
+	height: 20px;
+	float: right;
+}
+
+.bookList {
+	min-height: 654px;
+}
+
+.pagination {
+	margin: auto;
+	width: 200px;
+}
+
+.pagination ul {
+	margin-bottom: 10px;	
+}
+
+.pagination li {
+	padding: 0px;
+	width: auto;
+	height: auto;
+}
+
+.pagination a {
+	background-color: white;
+	border: 1px solid #ccc;
+	border-radius: 3px;
+	padding: 5px;
+	display: inline-block;
+	color: #555;
+	text-decoration: none;
+}
+
+.error {
+	color: red;
 }
