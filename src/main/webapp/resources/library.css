@@ -1,5 +1,8 @@
 body {
-	background-color: #e5e3db;
+/* 	background-color: #515153; */
+	background-image: url("indoor_library.jpg");
+	background-repeat: no-repeat;
+	background-attachment: fixed;
 	font-family: 'minion';
 	color: #555;
 	font-size: 14px;
@@ -12,8 +15,13 @@ body {
 }
 
 section {
-	border: 1px solid #ccc;
+/* 	border: 1px solid #ccc; */
 	border-radius: 6px;
+/* 	background-color: #F2F1ED; */
+/* 	background-color: #DAD9D5; */
+	background-color: #DEDDD9;
+/* 	background-color: #BCBBBA; */
+	
 }
 
 #menu {
@@ -183,7 +191,7 @@ tr {
 
 
 td {
-	padding: 6px;	
+	padding: 10px;	
 }
 
 thead {

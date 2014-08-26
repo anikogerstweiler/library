@@ -4,4 +4,5 @@
 	<li><a href="/smvc/loanedbooks" class="menulink">Loaned books</a></li>
 	<li><a href="/smvc/addbook" class="menulink">Add book</a></li>
 	<li><a href="<c:url value="/j_spring_security_logout"/>" class="menulink">Logout</a></li>
+	<li><sec:authentication property="name" /></li>
 </ul>

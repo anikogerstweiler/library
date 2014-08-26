@@ -1,7 +1,5 @@
 package com.epam.smvc.controller;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -12,8 +10,6 @@ import org.springframework.web.bind.annotation.RequestMethod;
 @Controller
 public class LoginController {
 	
-	private static final Logger logger = LoggerFactory.getLogger(LoginController.class);
-
 	@RequestMapping(value = "/login", method = RequestMethod.GET)
 	public String login(final Model model) {
 		BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();

@@ -29,9 +29,10 @@
 		<intercept-url pattern="/login" access="isAnonymous()"/>
 		<intercept-url pattern="/loginFailed" access="isAnonymous()"/>
 		<intercept-url pattern="/register" access="isAnonymous()"/>
-		<intercept-url pattern="/**" access="hasRole('ROLE_USER')"/>
+		<intercept-url pattern="/addbook" access="hasRole('ROLE_ADMIN')"/>
+		<access-denied-handler error-page="/accessdenied"/>
+		<intercept-url pattern="/**" access="isAuthenticated()"/>
 		<form-login login-page="/login" authentication-failure-url="/loginFailed"  default-target-url="/register"/>
-<!-- 		<logout /> -->
 	</http>
 	
 	<beans:bean id="dataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource">

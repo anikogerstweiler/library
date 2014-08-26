@@ -27,7 +27,7 @@
                     <input type="text" id="name" name="j_username" class="inputElement">
                     
                     <label for="pwd" class="inputElement">Password</label>
-                    <input type="password" id="pwd" maxlength="4" name="j_password" class="inputElement">
+                    <input type="password" id="pwd" name="j_password" class="inputElement">
                     
 	                <button type="submit" class="submit">Login</button>
 	                <label class="rememberme">
