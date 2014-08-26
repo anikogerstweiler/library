@@ -10,5 +10,7 @@ public interface HiredBookRepository {
 	
 	List<HiredBook> getHiredBooks();
 	
-	void save(HiredBook book);
+	boolean save(HiredBook book);
+	
+	List<HiredBook> listBooksByUser(String username);
 }

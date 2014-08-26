@@ -1,6 +1,7 @@
 <ul>
 	<li><a href="/smvc/register" class="menulink">Register</a></li>
 	<li><a href="/smvc/books" class="menulink">Books</a></li>
-	<li>My Books</li>
+	<li><a href="/smvc/loanedbooks" class="menulink">Loaned books</a></li>
+	<li><a href="/smvc/addbook" class="menulink">Add book</a></li>
 	<li><a href="<c:url value="/j_spring_security_logout"/>" class="menulink">Logout</a></li>
 </ul>

@@ -9,17 +9,17 @@
 <link rel="stylesheet" type="text/css" href="resources/library.css">
 </head>
 <body ng-app="bookApp">
-	<main class="container">
 	<section id="menu">
 		<%@ include file="menu.jspf" %>
 	</section>
+	<main class="container">
 	<section id="books" ng-controller="bookCtrl">
 		<div class="header">
 			<h1>Books</h1>
 		</div>
 		<input type="text" id="search" placeholder=" Search for book" ng-model="search">
 <!-- 		<img alt="" src="/smvc/resources/magnifying-glass.png" class="magnifyingglass"> -->
-		<hr>
+		<hr class="bookline">
 			<div class="bookList">
 				<ul ng-repeat="book in filteredBooks = (books | filter:search) | startFrom:(currentPage-1)*entryLimit | limitTo:entryLimit">
 					<li>
@@ -38,12 +38,12 @@
 									<em>ISBN: </em> {{book.isbn}}
 								</span>
 								<span class="attribute">
-									<a href="/smvc/borrow?id={{book.id}}" class="borrow"><em>Borrow</em></a>
+									<a href="/smvc/loan?id={{book.id}}" class="borrow"><em>Loan</em></a>
 								</span>
 							</div>
 						</fieldset>
 					</li>
-					<hr>
+					<hr class="bookline">
 				</ul>
 			</div>
 		<div class="pagination">

@@ -8,6 +8,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.Table;
 import javax.persistence.Transient;
+import javax.validation.constraints.Size;
 
 @Entity
 @Table(name = "books")
@@ -90,5 +91,12 @@ public class Book {
 
 	public void setDescription(String description) {
 		this.description = description;
+	}
+
+	@Override
+	public String toString() {
+		return "Book [id=" + id + ", author=" + author + ", title=" + title
+				+ ", year=" + year + ", isbn=" + isbn + ", image=" + image
+				+ ", description=" + description + "]";
 	}
 }

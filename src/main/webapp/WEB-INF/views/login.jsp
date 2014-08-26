@@ -8,10 +8,11 @@
     <link rel="stylesheet" type="text/css" href="resources/library.css">
 </head>
 <body>
-	<main class="container">
 		<section id="menu">
 		<%@ include file="menu.jspf" %>
 		</section>
+	<main class="container">
+<!-- 		<hr> -->
 		<section id="login">
 			<form action="j_spring_security_check" name="f" method="post">
 				<div class="header">
