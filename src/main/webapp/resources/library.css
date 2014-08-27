@@ -1,31 +1,27 @@
 body {
-/* 	background-color: #515153; */
 	background-image: url("indoor_library.jpg");
 	background-repeat: no-repeat;
 	background-attachment: fixed;
 	font-family: 'minion';
 	color: #555;
 	font-size: 14px;
+	background-size: cover;
 }
 
 .container {
 	width: 650px;
-/* 	margin: 100px auto; */
 	margin: auto;
 }
 
 section {
-/* 	border: 1px solid #ccc; */
 	border-radius: 6px;
-/* 	background-color: #F2F1ED; */
-/* 	background-color: #DAD9D5; */
 	background-color: #DEDDD9;
-/* 	background-color: #BCBBBA; */
-	
+	opacity: 0.9;
+	max-height: 878px;
+	display: block;
 }
 
 #menu {
-/* 	width: 650px; */
 	width: auto;
 	margin-bottom: 10px;
 	color: white;
@@ -35,14 +31,6 @@ section {
 	border: 0px;
 	border-radius: 0px;
 	display: block;
-}
-
-#menu ul {
-/* 	float: right; */
-}
-
-#menu li {
-/* 	width: 120px; */
 }
 
 #login {
@@ -95,10 +83,12 @@ label {
 	line-height: 150%;
 	display: block;
 	width: 50%;
-	height: 28px
+	height: 28px;
+	margin-top: 10px;
+	margin-bottom: 5px;
 }
 
-.rememberme, .submit {
+.rememberme {
 	display: block;
 	margin-top: 10px;
 }
@@ -110,13 +100,16 @@ label {
 
 button {
 	margin-top: 20px;
-	border-radius: 5px;
+	border-radius: 3px;
 	height: 30px;
 	width: 100px;
+/* 	background-color: #DEDDD9; */
 	background-color: white;
 	font-family: 'minion';
 	font-weight: bold;
 	color: #555;
+	display: block;
+	border: 1px solid #999;
 }
 
 .menulink {
@@ -174,11 +167,15 @@ fieldset {
 }
 
 .hiredbooks {
-/* 	background-color: #E3FFE5; */
 	padding: 5px 10px;
 	width: 628px;
 	margin: 10px;
 	text-align: center;
+}
+
+#addBook {
+	background-color: #E3FFE5;
+	padding-left: 20px;	
 }
 
 tbody tr:nth-child(odd) {
@@ -188,7 +185,6 @@ tbody tr:nth-child(odd) {
 tr {
 	border-collapse: collapse;
 }
-
 
 td {
 	padding: 10px;	
@@ -208,7 +204,6 @@ em {
 	float: right;
 	border-radius: 5px;
 	width: 200px;	
-/* 	background-color: #E3FFE5; */
 }
 
 .magnifyingglass {
@@ -218,7 +213,9 @@ em {
 }
 
 .bookList {
-	min-height: 654px;
+	min-height: 731px;
+	max-height: 748px;
+	overflow-y: auto;
 }
 
 .pagination {
@@ -247,9 +244,20 @@ em {
 }
 
 .error {
-	color: red;
+	border: 1px solid red;
 }
 
 .errorBox {
 	color: red;
+}
+
+.alignedright {
+	float: right;
+	margin-right: 20px;
+	color: #E3FFE5;
+}
+
+#reg {
+	background-color: #E3FFE5;
+	padding-left: 20px;	
 }

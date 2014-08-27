@@ -16,8 +16,8 @@ public class Authority {
     @GeneratedValue
     private Long id;
     
-    @Column(name="userid")
-    private Long userId;
+    @Column(name="username")
+    private String username;
 
     @Column(name = "authority")
     private String authority;
@@ -34,12 +34,12 @@ public class Authority {
 		this.id = id;
 	}
 
-	public Long getUserId() {
-		return userId;
+	public String getUsername() {
+		return username;
 	}
 
-	public void setUserId(Long userId) {
-		this.userId = userId;
+	public void setUsername(String username) {
+		this.username = username;
 	}
 
 	public String getAuthority() {

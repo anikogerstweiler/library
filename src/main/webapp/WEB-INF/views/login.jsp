@@ -8,38 +8,38 @@
     <link rel="stylesheet" type="text/css" href="resources/library.css">
 </head>
 <body>
-		<section id="menu">
-		<%@ include file="menu.jspf" %>
-		</section>
+	<section id="menu">
+	<%@ include file="menu.jspf" %>
+	</section>
 	<main class="container">
-<!-- 		<hr> -->
 		<section id="login">
 			<form action="j_spring_security_check" name="f" method="post">
 				<div class="header">
 					<h1>Login</h1>
 				</div>
+				
 				<div class="column">
 					<c:if test="${error == true}">
 						<label class="error">Wrong user name or password</label>
 					</c:if>
 					
-                    <label for="name" class="inputElement"> Username </label>
-                    <input type="text" id="name" name="j_username" class="inputElement">
+<!--                     <label for="name" class="inputElement"> Username </label> -->
+                    <input type="text" id="name" name="j_username" class="inputElement" placeholder=" Username" autofocus="autofocus">
                     
-                    <label for="pwd" class="inputElement">Password</label>
-                    <input type="password" id="pwd" name="j_password" class="inputElement">
+<!--                     <label for="pwd" class="inputElement">Password</label> -->
+                    <input type="password" id="pwd" name="j_password" class="inputElement" placeholder=" Password">
                     
-	                <button type="submit" class="submit">Login</button>
+	                <button type="submit">Login</button>
 	                <label class="rememberme">
 	                	<input type="checkbox" name="_spring_security_remember_me">Remember me
 	                </label>
                 </div>
+                
                 <div class="footer">
                 	<small id="footer">You don't have an account? <a href="/smvc/register" class="menulink">Register here</a></small>
                 </div>
 			</form>
 		</section>
 	</main>
-
 </body>
 </html>

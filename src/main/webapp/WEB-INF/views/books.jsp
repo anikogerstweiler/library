@@ -1,6 +1,5 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
-<%@ taglib prefix="sec"
-	uri="http://www.springframework.org/security/tags"%>
+<%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags"%>
 <%@ page session="false"%>
 <html>
 <head>
@@ -17,43 +16,44 @@
 		<div class="header">
 			<h1>Books</h1>
 		</div>
-		<input type="text" id="search" placeholder=" Search for book" ng-model="search">
-<!-- 		<img alt="" src="/smvc/resources/magnifying-glass.png" class="magnifyingglass"> -->
-		<hr class="bookline">
-			<div class="bookList">
-				<ul ng-repeat="book in filteredBooks = (books | filter:search) | startFrom:(currentPage-1)*entryLimit | limitTo:entryLimit">
-					<li>
-						<fieldset>
-							<h2>{{book.title}}</h2>
-							<small id="author">{{book.author}}</small>
-							<p>
-	<%-- 							<img alt="${book.title}" src="${book.image}"> --%>
-								{{book.description}}
-							</p>
-							<div class="attributes">
-								<span class="attribute">
-									<em>Publication year: </em> {{book.year}}
-								</span>
-								<span class="attribute">
-									<em>ISBN: </em> {{book.isbn}}
-								</span>
-								<span class="attribute">
-									<a href="/smvc/loan?id={{book.id}}" class="borrow"><em>Loan</em></a>
-								</span>
-							</div>
-						</fieldset>
-					</li>
-					<hr class="bookline">
-				</ul>
+		
+		<div class="bookList">
+			<input type="text" id="search" placeholder=" Search for book" ng-model="search">
+			<hr class="bookline">
+			<ul ng-repeat="book in filteredBooks = (books | filter:search) | startFrom:(currentPage-1)*entryLimit | limitTo:entryLimit">
+				<li>
+					<fieldset>
+						<h2>{{book.title}}</h2>
+						<small id="author">{{book.author}}</small>
+						<p>
+							{{book.description}}
+						</p>
+						<div class="attributes">
+							<span class="attribute">
+								<em>Publication year: </em> {{book.year}}
+							</span>
+							<span class="attribute">
+								<em>ISBN: </em> {{book.isbn}}
+							</span>
+							<span class="attribute">
+								<a href="/smvc/loan?id={{book.id}}" class="borrow"><em>Loan</em></a>
+							</span>
+						</div>
+					</fieldset>
+				</li>
+				<hr class="bookline">
+			</ul>
+		
+			<div class="pagination">
+				<pagination data-boundary-links="true"
+							total-items="numberOfItems" num-pages="noOfPages"
+							ng-model="currentPage" max-size="maxSize" class="pagination"
+							items-per-page="entryLimit" data-previous-text="&laquo;"
+							data-next-text="&raquo;">
+				</pagination>
 			</div>
-		<div class="pagination">
-			<pagination data-boundary-links="true"
-						total-items="numberOfItems" num-pages="noOfPages"
-						ng-model="currentPage" max-size="maxSize" class="pagination"
-						items-per-page="entryLimit" data-previous-text="&laquo;"
-						data-next-text="&raquo;">
-			</pagination>
 		</div>
+		
 		<div class="footer">
 			<small id="footer">${today}</small>
 		</div>

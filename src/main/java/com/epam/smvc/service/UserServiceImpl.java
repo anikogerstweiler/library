@@ -4,6 +4,8 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
+import javax.annotation.Resource;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
@@ -11,6 +13,10 @@ import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.PlatformTransactionManager;
+import org.springframework.transaction.TransactionStatus;
+import org.springframework.transaction.annotation.Transactional;
+import org.springframework.transaction.support.DefaultTransactionDefinition;
 
 import com.epam.smvc.dao.AuthorityRepository;
 import com.epam.smvc.dao.UserRepository;
@@ -19,26 +25,36 @@ import com.epam.smvc.model.User;
 
 @Service("userService")
 public class UserServiceImpl implements UserService { //UserDetailsService
-//    @Autowired
-//    private AuthorityRepository authRepository;
     
-//    @Autowired
-//    private UserRepository userRepository;
+	@Autowired
+    private AuthorityRepository authRepository;
+    
+    @Autowired
+    private UserRepository userRepository;
+    
+    @Resource
+	private PlatformTransactionManager txManager;
     
 //    @Override
 //    public User find(Long id) {
 //        return userRepository.findOne(id);
 //    }
 //
-//    @Override
-//    public User save(User user) {
-//        return userRepository.save(user);
-//    }
+    @Transactional
+    @Override
+    public void save(User user) {
+    	TransactionStatus status = txManager.getTransaction(new DefaultTransactionDefinition());
+        userRepository.save(user);
+        txManager.commit(status);
+    }
 
-//    @Override
-//    public Authority save(Authority auth) {
-//        return authRepository.save(auth);
-//    }
+    @Transactional
+    @Override
+    public void save(Authority auth) {
+    	TransactionStatus status = txManager.getTransaction(new DefaultTransactionDefinition());
+        authRepository.save(auth);
+        txManager.commit(status);
+    }
     
 //    @Override
 //    public User findByUsername(String username) {

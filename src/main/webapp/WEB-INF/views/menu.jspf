@@ -1,8 +1,33 @@
 <ul>
-	<li><a href="/smvc/register" class="menulink">Register</a></li>
-	<li><a href="/smvc/books" class="menulink">Books</a></li>
-	<li><a href="/smvc/loanedbooks" class="menulink">Loaned books</a></li>
-	<li><a href="/smvc/addbook" class="menulink">Add book</a></li>
-	<li><a href="<c:url value="/j_spring_security_logout"/>" class="menulink">Logout</a></li>
-	<li><sec:authentication property="name" /></li>
+	<sec:authorize access="isAnonymous()">
+		<li>
+			<a href="/smvc/register" class="menulink">Register</a>
+		</li>
+	</sec:authorize>
+	
+	<li>
+		<a href="/smvc/books" class="menulink">Books</a>
+	</li>
+	
+	<li>
+		<a href="/smvc/loanedbooks" class="menulink">Loaned books</a>
+	</li>
+	
+	<sec:authorize access="hasRole('ROLE_ADMIN')">
+		<li>
+			<a href="/smvc/addbook" class="menulink">Add book</a>
+		</li>
+	</sec:authorize>
+	
+	<sec:authorize access="isAuthenticated()">
+		<li>
+			<a href="<c:url value="/j_spring_security_logout"/>" class="menulink">Logout</a>
+		</li>
+	</sec:authorize>
+	
+	<sec:authorize access="isAuthenticated()">
+		<li class="alignedright">
+			Welcome <sec:authentication property="name" /> !
+		</li>
+	</sec:authorize>
 </ul>

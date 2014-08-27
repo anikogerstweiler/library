@@ -5,11 +5,11 @@ import com.epam.smvc.model.User;
 
 public interface UserService {
 	
-//	User save(User user);
+	void save(User user);
 //
 //	User find(Long id);
 //
 //	User findByUsername(String username);
 
-//	Authority save(Authority auth);
+	void save(Authority auth);
 }

@@ -1,14 +1,29 @@
 package com.epam.smvc.controller;
 
-import org.springframework.security.core.Authentication;
-import org.springframework.security.core.context.SecurityContextHolder;
+import java.text.DateFormat;
+import java.util.Date;
+import java.util.Locale;
+
+import javax.validation.Valid;
+
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
+import com.epam.smvc.form.UserForm;
+import com.epam.smvc.model.Authority;
+import com.epam.smvc.model.User;
+import com.epam.smvc.service.UserService;
+
 @Controller
 public class HomeController {
+	
+	@Autowired
+	UserService userService;
 	
 	@RequestMapping(value = "/", method = RequestMethod.GET)
 	public String home(final Model model) {
@@ -17,20 +32,45 @@ public class HomeController {
 	}
 	
 	@RequestMapping(value = "/register", method = RequestMethod.GET)
-	public String register(final Model model) {
+	public String loadRegistrationForm(final Locale locale, final Model model) {
+		String today = getDate(locale);
+		model.addAttribute("today", today);
+		
+		model.addAttribute("userForm", new UserForm());
 		
 		return "register";
 	}
 	
-	@RequestMapping(value = "/accessdenied", method = RequestMethod.GET)
-	public String accessdenied(final Model model) {
-		Authentication user = SecurityContextHolder.getContext().getAuthentication();
-		if (user != null) {
-			model.addAttribute("msg", user.getName() + ", you do not have permission to access this page!");
-		} else {
-			model.addAttribute("msg", "You do not have permission to access this page!");
+	@RequestMapping(value = "/register", method = RequestMethod.POST)
+	public String register(@Valid @ModelAttribute("userForm") UserForm userForm, BindingResult bindingResult, final Model model) {
+		if (bindingResult.hasErrors()) {
+			model.addAttribute("status", bindingResult);
+			return "register";
 		}
-		return "accessdenied";
+		
+		User user = new User();
+		user.setUsername(userForm.getUsername());
+		user.setFirstname(userForm.getFirstName());
+		user.setLastname(userForm.getLastName());
+		user.setPassword(userForm.getPwd());
+		user.setEnabled(true);
+		
+		userService.save(user);
+		
+		Authority authority = new Authority();
+		authority.setUsername(userForm.getUsername());
+		authority.setAuthority("ROLE_USER");
+		
+		userService.save(authority);
+		
+		return "redirect:/" + "login";
 	}
 	
+	private String getDate(final Locale locale) {
+		Date date = new Date();
+		DateFormat dateFormat = DateFormat.getDateTimeInstance(DateFormat.LONG, DateFormat.SHORT, locale);
+		String today = dateFormat.format(date);
+		
+		return today;
+	}
 }

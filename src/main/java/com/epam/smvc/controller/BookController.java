@@ -31,12 +31,7 @@ public class BookController {
 
 	@RequestMapping(value = "/books", method = RequestMethod.GET)
 	public String listBooks(final Locale locale, final Model model) {
-		Date date = new Date();
-		
-		DateFormat dateFormat = DateFormat.getDateTimeInstance(DateFormat.LONG, DateFormat.SHORT, locale);
-		
-		String today = dateFormat.format(date);
-		
+		String today = getDate(locale);
 		model.addAttribute("today", today);
 		
 		model.addAttribute("books", bookService.getBooks());
@@ -46,14 +41,20 @@ public class BookController {
 	
 	@RequestMapping(value = "/addbook", method = RequestMethod.GET)
 	public String createForm(final Locale locale, final Model model) {
+		String today = getDate(locale);
+		model.addAttribute("today", today);
+		
 		model.addAttribute("addBookForm", new AddBookForm());
 		
 		return "addbook";
 	}
 	
 	@RequestMapping(value = "/addbook", method = RequestMethod.POST)
-	public String addBook(@Valid @ModelAttribute("addBookForm") AddBookForm bookForm, BindingResult bindingResult) {
+	public String addBook(@Valid @ModelAttribute("addBookForm") AddBookForm bookForm, BindingResult bindingResult, final Model model, final Locale locale) {
 		if (bindingResult.hasErrors()) {
+			model.addAttribute("status", bindingResult);
+			String today = getDate(locale);
+			model.addAttribute("today", today);
 			return "addbook";
 		}
 		
@@ -84,5 +85,13 @@ public class BookController {
 		}
 		
 		return result;
+	}
+	
+	private String getDate(final Locale locale) {
+		Date date = new Date();
+		DateFormat dateFormat = DateFormat.getDateTimeInstance(DateFormat.LONG, DateFormat.SHORT, locale);
+		String today = dateFormat.format(date);
+		
+		return today;
 	}
 }

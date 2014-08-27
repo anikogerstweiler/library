@@ -4,6 +4,7 @@ import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
 import org.hibernate.validator.constraints.NotEmpty;
+import org.hibernate.validator.constraints.Range;
 
 public class AddBookForm {
 	
@@ -18,6 +19,7 @@ public class AddBookForm {
 	private String author;
 	
 	@NotNull(message="Please enter the publication year")
+	@Range(min=1000, max=2014, message="Year must between 1000 and 2014")
 	private Long year;
 	
 	@NotEmpty(message="Please enter the title")

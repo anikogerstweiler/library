@@ -24,9 +24,6 @@ public class User implements UserDetails {
 	private static final long serialVersionUID = -464364469214612590L;
 
 	@Id
-	@GeneratedValue
-	private Long id;
-
 	@Column(name = "username")
 	private String username;
 
@@ -56,14 +53,6 @@ public class User implements UserDetails {
 	
 	@Transient
 	private boolean credentialsNonExpired;
-
-	public Long getId() {
-		return id;
-	}
-
-	public void setId(Long id) {
-		this.id = id;
-	}
 
 	public String getUsername() {
 		return username;
