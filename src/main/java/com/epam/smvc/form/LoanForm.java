@@ -1,5 +1,6 @@
 package com.epam.smvc.form;
 
+
 public class LoanForm {
 	
 	private Long id;

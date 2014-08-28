@@ -4,12 +4,9 @@ import java.util.List;
 
 import com.epam.smvc.model.HiredBook;
 
-import org.springframework.transaction.annotation.Transactional;
-
 public interface HiredBookService {
 	
-	@Transactional
-	boolean save(HiredBook book);
+	String save(HiredBook book);
 
 	HiredBook find(Long id);
 

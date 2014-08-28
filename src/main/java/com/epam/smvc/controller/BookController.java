@@ -10,7 +10,6 @@ import javax.validation.Valid;
 
 import org.codehaus.jackson.map.ObjectMapper;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -31,8 +30,7 @@ public class BookController {
 
 	@RequestMapping(value = "/books", method = RequestMethod.GET)
 	public String listBooks(final Locale locale, final Model model) {
-		String today = getDate(locale);
-		model.addAttribute("today", today);
+		setActualDate(locale, model);
 		
 		model.addAttribute("books", bookService.getBooks());
 		
@@ -41,8 +39,7 @@ public class BookController {
 	
 	@RequestMapping(value = "/addbook", method = RequestMethod.GET)
 	public String createForm(final Locale locale, final Model model) {
-		String today = getDate(locale);
-		model.addAttribute("today", today);
+		setActualDate(locale, model);
 		
 		model.addAttribute("addBookForm", new AddBookForm());
 		
@@ -53,8 +50,8 @@ public class BookController {
 	public String addBook(@Valid @ModelAttribute("addBookForm") AddBookForm bookForm, BindingResult bindingResult, final Model model, final Locale locale) {
 		if (bindingResult.hasErrors()) {
 			model.addAttribute("status", bindingResult);
-			String today = getDate(locale);
-			model.addAttribute("today", today);
+			setActualDate(locale, model);
+			
 			return "addbook";
 		}
 		
@@ -93,5 +90,10 @@ public class BookController {
 		String today = dateFormat.format(date);
 		
 		return today;
+	}
+	
+	private void setActualDate(final Locale locale, final Model model) {
+		String today = getDate(locale);
+		model.addAttribute("today", today);
 	}
 }

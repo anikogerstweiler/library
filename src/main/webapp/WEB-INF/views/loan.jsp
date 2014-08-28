@@ -20,11 +20,8 @@
 			</div>
 			
 			<div class="bookList">
-				<c:if test="${bookAvailable == false}">
-					<label>Book can not be borrow this time!</label>
-				</c:if>
 				<form:form role="form" method="POST" action="/smvc/loan" commandName="loanForm">
-					<fieldset>
+					<fieldset id="loan">
 						<form:input type="hidden" name="id" id="id" value="${book.id}" path="id"/>
 						<h2>${book.title}</h2>
 						<small id="author">${book.author}</small>
@@ -40,11 +37,15 @@
 							</span> 
 						</div>
 						<div>
-							<label for="fromdate" class="inputElement">Start date</label>
-							<form:input type="date" id="fromDate" class="inputElement" name="fromDate" path="fromDate"/>
-							
-							<label for="todate" class="inputElement">End date</label>
-							<form:input type="date" id="toDate" class="inputElement" name="toDate" path="toDate"/>
+							<label for="fromdate" class="inputElement">
+								<abbr title="The start date cannot be later than the actual date. Today's date: ${today}">
+									Start date*
+								</abbr>
+							</label>
+							<form:input type="date" id="fromDate" class="inputElement" name="fromDate" path="fromDate" required="required"/>
+							<c:if test="${bookAvailable == false}">
+								<span class="errorBox">Book is not available till ${notAvailableTill}!</span>
+							</c:if>
 							
 							<button type="submit">Borrow</button>
 						</div>

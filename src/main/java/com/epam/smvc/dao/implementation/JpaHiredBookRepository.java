@@ -31,26 +31,28 @@ public class JpaHiredBookRepository extends JpaGenericRepository implements Hire
 	}
 
 	@Override
-	public boolean save(HiredBook book) {
-		boolean saved = false;
-		if (isBookAvailable(book.getFromdate(), book.getTodate())) {
+	public Date save(HiredBook book) {
+		Date notAvailableTill = isBookAvailable(book.getFromdate(), book.getTodate(), book.getBookid());
+		if (notAvailableTill == null) {
 			entityManager.persist(book);
-			saved = true;
 		}
 		
-		return saved;
+		return notAvailableTill;
 	}
 	
 	//TODO: not works properly!!
-	private boolean isBookAvailable(Date from, Date to) {
-		TypedQuery<HiredBook> query = entityManager.createQuery("Select h from HiredBook h where (h.fromdate between :from and :to) or (h.todate between :from and :to)", HiredBook.class);
+	private Date isBookAvailable(Date from, Date to, Long id) {
+		TypedQuery<HiredBook> query = entityManager.createQuery("Select h from HiredBook h where h.id = :id and ((h.fromdate between :from and :to) or (h.todate between :from and :to)) order by h.todate", HiredBook.class);
 		query.setParameter("from", from)
-			 .setParameter("to", to);
+			 .setParameter("to", to)
+			 .setParameter("id", id);
 		
 		List<HiredBook> result = query.getResultList();
 		System.out.println("SIZE: " + result.size());
 		
-		return result.size() == 0 ? true : false;
+		System.out.println("TILL: " + result.get(result.size()-1).getTodate());
+		
+		return result.get(result.size()-1).getTodate();
 	}
 
 	@SuppressWarnings("unchecked")

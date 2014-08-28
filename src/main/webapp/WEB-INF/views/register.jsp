@@ -19,6 +19,8 @@
 			</div>
 			
 			<div class="bookList" id="reg">
+				<h3>Please enter your personal information to continue.</h3>
+				<small>If you have previously registered with us, <a href="/smvc/login">click here</a></small>
 				<form:form role="form" method="POST" action="/smvc/register" commandName="userForm" >
 					<fieldset>
 						<div>
@@ -42,6 +44,8 @@
 							<label for="pwd" class="inputElement">Password</label>
 							<form:input type="password" id="pwd" class="inputElement ${not empty status.getFieldError('pwd') ? 'error' : '' }" name="pwd" path="pwd"/>
 							<form:errors path="pwd" cssClass="errorBox"/>
+							
+							<span>Contact information</span>
 							
 							<button type="submit">Register</button>
 						</div>
