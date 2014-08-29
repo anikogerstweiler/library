@@ -1,6 +1,7 @@
 package com.epam.smvc.controller;
 
 import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Locale;
 
@@ -75,10 +76,8 @@ public class HomeController {
 	}
 	
 	private String getDate(final Locale locale) {
-		Date date = new Date();
-		DateFormat dateFormat = DateFormat.getDateTimeInstance(DateFormat.LONG, DateFormat.SHORT, locale);
-		String today = dateFormat.format(date);
+		String actualDate = new SimpleDateFormat("EEE MMM d, yyyy", Locale.ENGLISH).format(new Date());
 		
-		return today;
+		return actualDate;
 	}
 }

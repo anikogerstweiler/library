@@ -48,9 +48,12 @@ public class JpaBookRepository extends JpaGenericRepository implements BookRepos
 
 	@Override
 	public void removeBookById(Long id) {
-		Query query = entityManager.createQuery("DELETE FROM Book b WHERE b.id = :id ");
-		query.setParameter("id", id);
+		Query removeBookQuery = entityManager.createQuery("DELETE FROM Book b WHERE b.id = :id ");
+		removeBookQuery.setParameter("id", id);
+		Query removeBookFromHiredBook = entityManager.createQuery("DELETE FROM HiredBook h WHERE h.bookid = :id ");
+		removeBookFromHiredBook.setParameter("id", id);
 		
-		query.executeUpdate();
+		removeBookFromHiredBook.executeUpdate();
+		removeBookQuery.executeUpdate();
 	}
 }

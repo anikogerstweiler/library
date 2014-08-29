@@ -1,6 +1,5 @@
 package com.epam.smvc.controller;
 
-import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
@@ -111,9 +110,8 @@ public class BorrowController {
 	}
 	
 	private String getDate(final Locale locale) {
-		DateFormat dateFormat = DateFormat.getDateTimeInstance(DateFormat.LONG, DateFormat.SHORT, locale);
-		String today = dateFormat.format(new Date());
+		String actualDate = new SimpleDateFormat("EEE MMM d, yyyy", Locale.ENGLISH).format(new Date());
 		
-		return today;
+		return actualDate;
 	}
 }

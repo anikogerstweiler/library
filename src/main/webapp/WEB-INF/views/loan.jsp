@@ -43,7 +43,7 @@
 								</abbr>
 							</label>
 							<form:input type="date" id="fromDate" class="inputElement" name="fromDate" 
-								path="fromDate" required="required" min="${date}"/>
+								path="fromDate" required="required" min="${date}" value="${date}"/>
 							<c:if test="${bookAvailable == false}">
 								<span class="errorBox">Book is not available till ${available}!</span>
 							</c:if>
