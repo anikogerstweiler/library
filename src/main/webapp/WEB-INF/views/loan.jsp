@@ -37,6 +37,8 @@
 							</span> 
 						</div>
 						<div>
+							<h3>The rental period is one month from the start date</h3>
+						
 							<label for="fromdate" class="inputElement">
 								<abbr title="The start date cannot be later than the actual date. Today's date: ${today}">
 									Start date*
