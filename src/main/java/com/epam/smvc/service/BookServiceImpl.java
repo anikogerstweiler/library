@@ -46,4 +46,12 @@ public class BookServiceImpl implements BookService {
 		return bookRepository.getBooks();
 	}
 
+	@Transactional
+	@Override
+	public void removeBookById(Long id) {
+		TransactionStatus status = txManager.getTransaction(new DefaultTransactionDefinition());
+		bookRepository.removeBookById(id);
+		txManager.commit(status);
+	}
+
 }

@@ -14,6 +14,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -37,6 +38,24 @@ public class BookController {
 		return "books";
 	}
 	
+	@RequestMapping(value = "/removebook", method = RequestMethod.GET)
+	public String removeBook(final Locale locale, final Model model) {
+		setActualDate(locale, model);
+		
+		model.addAttribute("books", bookService.getBooks());
+		
+		return "removebook";
+	}
+	
+	@RequestMapping(value = "/removebook/{id}", method = RequestMethod.GET)
+	public String removeBookById(@PathVariable Long id, final Locale locale, final Model model) {
+		setActualDate(locale, model);
+		
+		bookService.removeBookById(id);
+		
+		return "redirect:/removebook";
+	}
+	
 	@RequestMapping(value = "/addbook", method = RequestMethod.GET)
 	public String createForm(final Locale locale, final Model model) {
 		setActualDate(locale, model);
@@ -55,18 +74,13 @@ public class BookController {
 			return "addbook";
 		}
 		
-		Book book = new Book();
-		book.setAuthor(bookForm.getAuthor());
-		book.setDescription(bookForm.getDescription());
-		book.setIsbn(bookForm.getIsbn());
-		book.setTitle(bookForm.getTitle());
-		book.setYear(bookForm.getYear());
+		Book book = createBook(bookForm);
 		
 		bookService.save(book);
 		
 		return "books";
 	}
-	
+
 	@RequestMapping(value = "/bookAJAX", method = RequestMethod.GET, produces = "application/json")
 	@ResponseBody
 	public String loadBooks() {
@@ -84,10 +98,21 @@ public class BookController {
 		return result;
 	}
 	
+	private Book createBook(AddBookForm bookForm) {
+		Book book = new Book();
+		
+		book.setAuthor(bookForm.getAuthor());
+		book.setDescription(bookForm.getDescription());
+		book.setIsbn(bookForm.getIsbn());
+		book.setTitle(bookForm.getTitle());
+		book.setYear(bookForm.getYear());
+		
+		return book;
+	}
+	
 	private String getDate(final Locale locale) {
-		Date date = new Date();
 		DateFormat dateFormat = DateFormat.getDateTimeInstance(DateFormat.LONG, DateFormat.SHORT, locale);
-		String today = dateFormat.format(date);
+		String today = dateFormat.format(new Date());
 		
 		return today;
 	}

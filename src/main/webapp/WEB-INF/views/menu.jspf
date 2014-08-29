@@ -5,17 +5,27 @@
 		</li>
 	</sec:authorize>
 	
-	<li>
-		<a href="/smvc/books" class="menulink">Books</a>
-	</li>
+	<sec:authorize access="isAuthenticated()">
+		<li>
+			<a href="/smvc/books" class="menulink">Books</a>
+		</li>
+	</sec:authorize>
 	
-	<li>
-		<a href="/smvc/loanedbooks" class="menulink">Loaned books</a>
-	</li>
+	<sec:authorize access="hasRole('ROLE_USER')">
+		<li>
+			<a href="/smvc/loanedbooks" class="menulink">Loaned books</a>
+		</li>
+	</sec:authorize>
 	
 	<sec:authorize access="hasRole('ROLE_ADMIN')">
 		<li>
 			<a href="/smvc/addbook" class="menulink">Add book</a>
+		</li>
+	</sec:authorize>
+	
+	<sec:authorize access="hasRole('ROLE_ADMIN')">
+		<li>
+			<a href="/smvc/removebook" class="menulink">Remove book</a>
 		</li>
 	</sec:authorize>
 	

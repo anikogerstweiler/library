@@ -1,6 +1,5 @@
 package com.epam.smvc.dao;
 
-import java.util.Date;
 import java.util.List;
 
 import com.epam.smvc.model.HiredBook;
@@ -11,7 +10,7 @@ public interface HiredBookRepository {
 	
 	List<HiredBook> getHiredBooks();
 	
-	Date save(HiredBook book);
+	String save(HiredBook book);
 	
 	List<HiredBook> listBooksByUser(String username);
 }

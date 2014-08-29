@@ -7,6 +7,7 @@ import java.util.Locale;
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -48,11 +49,13 @@ public class HomeController {
 			return "register";
 		}
 		
+		BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
+		
 		User user = new User();
 		user.setUsername(userForm.getUsername());
 		user.setFirstname(userForm.getFirstName());
 		user.setLastname(userForm.getLastName());
-		user.setPassword(userForm.getPwd());
+		user.setPassword(encoder.encode(userForm.getPwd()));
 		user.setEnabled(true);
 		
 		userService.save(user);
@@ -64,6 +67,11 @@ public class HomeController {
 		userService.save(authority);
 		
 		return "redirect:/" + "login";
+	}
+	
+	@RequestMapping(value="/error", method = RequestMethod.GET)
+	public String error() {
+		return "error";
 	}
 	
 	private String getDate(final Locale locale) {

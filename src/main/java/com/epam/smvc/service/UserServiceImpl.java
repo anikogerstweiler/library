@@ -9,9 +9,6 @@ import javax.annotation.Resource;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
-import org.springframework.security.core.userdetails.UserDetails;
-import org.springframework.security.core.userdetails.UserDetailsService;
-import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.PlatformTransactionManager;
 import org.springframework.transaction.TransactionStatus;
@@ -35,11 +32,6 @@ public class UserServiceImpl implements UserService { //UserDetailsService
     @Resource
 	private PlatformTransactionManager txManager;
     
-//    @Override
-//    public User find(Long id) {
-//        return userRepository.findOne(id);
-//    }
-//
     @Transactional
     @Override
     public void save(User user) {
@@ -56,35 +48,7 @@ public class UserServiceImpl implements UserService { //UserDetailsService
         txManager.commit(status);
     }
     
-//    @Override
-//    public User findByUsername(String username) {
-//        return userRepository.findByUsername(username);
-//    }
-//    /**
-//    * Returns a populated {@link UserDetails} object.
-//    * The username is first retrieved from the database and then mapped to
-//    * a {@link UserDetails} object.
-//    */
-//    public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-//        
-//        User domainUser = userRepository.findByUsername(username);
-//        if(domainUser == null){
-//            throw new UsernameNotFoundException(username);
-//        }
-//        User result = new User();
-//        result.setUsername(domainUser.getUsername());
-//        result.setPassword(domainUser.getPassword());
-//        result.setEnabled(true);
-//        result.setAccountNonExpired(true);
-//        result.setAccountNonLocked(true);
-//        result.setCredentialsNonExpired(true);
-//        result.setAuthorities(getGrantedAuthorities(domainUser.getEntityAuthorities()));
-//        
-//        result.setFirstname(domainUser.getFirstname());
-//        result.setLastname(domainUser.getLastname());
-//
-//        return result;
-//    }
+
     /**
     * Wraps {@link String} roles to {@link SimpleGrantedAuthority} objects
     * @param roles {@link String} of roles

@@ -19,7 +19,7 @@
 		
 		<div class="bookList">
 			<input type="text" id="search" placeholder=" Search for book" ng-model="search">
-			<hr class="bookline">
+<!-- 			<hr class="bookline"> -->
 			<ul ng-repeat="book in filteredBooks = (books | filter:search) | startFrom:(currentPage-1)*entryLimit | limitTo:entryLimit">
 				<li>
 					<fieldset>
@@ -36,7 +36,9 @@
 								<em>ISBN: </em> {{book.isbn}}
 							</span>
 							<span class="attribute">
-								<a href="/smvc/loan?id={{book.id}}" class="borrow"><em>Loan</em></a>
+								<sec:authorize access="hasRole('ROLE_USER')">
+									<a href="/smvc/loan?id={{book.id}}" class="borrow"><em>Loan</em></a>
+								</sec:authorize>
 							</span>
 						</div>
 					</fieldset>
@@ -44,6 +46,7 @@
 				<hr class="bookline">
 			</ul>
 		
+		</div>
 			<div class="pagination">
 				<pagination data-boundary-links="true"
 							total-items="numberOfItems" num-pages="noOfPages"
@@ -52,7 +55,6 @@
 							data-next-text="&raquo;">
 				</pagination>
 			</div>
-		</div>
 		
 		<div class="footer">
 			<small id="footer">${today}</small>

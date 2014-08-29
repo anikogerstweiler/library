@@ -19,7 +19,7 @@
 				<h1>Loan Book</h1>
 			</div>
 			
-			<div class="bookList">
+			<div class="loanedBooks">
 				<form:form role="form" method="POST" action="/smvc/loan" commandName="loanForm">
 					<fieldset id="loan">
 						<form:input type="hidden" name="id" id="id" value="${book.id}" path="id"/>
@@ -42,9 +42,10 @@
 									Start date*
 								</abbr>
 							</label>
-							<form:input type="date" id="fromDate" class="inputElement" name="fromDate" path="fromDate" required="required"/>
+							<form:input type="date" id="fromDate" class="inputElement" name="fromDate" 
+								path="fromDate" required="required" min="${date}"/>
 							<c:if test="${bookAvailable == false}">
-								<span class="errorBox">Book is not available till ${notAvailableTill}!</span>
+								<span class="errorBox">Book is not available till ${available}!</span>
 							</c:if>
 							
 							<button type="submit">Borrow</button>

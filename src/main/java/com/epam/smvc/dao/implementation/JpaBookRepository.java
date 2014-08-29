@@ -2,6 +2,7 @@ package com.epam.smvc.dao.implementation;
 
 import java.util.List;
 
+import javax.persistence.Query;
 import javax.persistence.TypedQuery;
 
 import org.springframework.stereotype.Repository;
@@ -43,5 +44,13 @@ public class JpaBookRepository extends JpaGenericRepository implements BookRepos
 	@Override
 	public Book findById(Long id) {
 		return entityManager.find(Book.class, id);
+	}
+
+	@Override
+	public void removeBookById(Long id) {
+		Query query = entityManager.createQuery("DELETE FROM Book b WHERE b.id = :id ");
+		query.setParameter("id", id);
+		
+		query.executeUpdate();
 	}
 }

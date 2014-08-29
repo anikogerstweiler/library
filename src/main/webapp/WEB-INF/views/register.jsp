@@ -45,8 +45,6 @@
 							<form:input type="password" id="pwd" class="inputElement ${not empty status.getFieldError('pwd') ? 'error' : '' }" name="pwd" path="pwd"/>
 							<form:errors path="pwd" cssClass="errorBox"/>
 							
-							<span>Contact information</span>
-							
 							<button type="submit">Register</button>
 						</div>
 					</fieldset>

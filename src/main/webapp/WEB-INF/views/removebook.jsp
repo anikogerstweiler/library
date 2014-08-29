@@ -14,7 +14,7 @@
 	<main class="container">
 		<section id="books">
 			<div class="header">
-				<h1>Loaned Books</h1>
+				<h1>Remove Book</h1>
 			</div>
 			
 			<div class="loanedBooks">
@@ -23,19 +23,23 @@
 						<tr>
 							<td>Title</td>
 							<td>Author</td>
-							<td>From</td>
-							<td>To</td>
+							<td>Year</td>
+							<td>ISBN</td>
+							<td></td>
 						</tr>
 					</thead>
 					<tbody>
-						<c:forEach var="books" items="${mybooks}">
-							<c:set var="hiredbook" value="${books[0]}"/>
-							<c:set var="book" value="${books[1]}"/>
+						<c:forEach var="book" items="${books}">
 							<tr>
 								<td>${book.title}</td>
 								<td>${book.author}</td>
-								<td>${hiredbook.fromdate}</td>
-								<td>${hiredbook.todate}</td>
+								<td>${book.year}</td>
+								<td>${book.isbn}</td>
+								<td>
+									<a href="<c:url value="/removebook/${book.id}"/>" class="removeButton">
+										<img src="<c:url value="/resources/delete.png"/>" class="deleteimage">
+									</a>
+								</td>
 							</tr>
 						</c:forEach>
 					</tbody>

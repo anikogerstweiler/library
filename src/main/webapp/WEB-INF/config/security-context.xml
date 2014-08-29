@@ -8,16 +8,11 @@
 
 <http pattern="/resources/**" security="none" />
 
-<!-- 	<beans:bean id="UserServiceImpl" class="com.epam.smvc.service.UserServiceImpl" /> -->
-	
-	<beans:bean id='bCryptPasswordEncoder' class='org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder'/> 
-
 	<authentication-manager>
 		<authentication-provider>
-		<jdbc-user-service data-source-ref="dataSource"/>
-			<!-- <password-encoder hash="bcrypt" /> -->
+			<password-encoder hash="bcrypt" />
+			<jdbc-user-service data-source-ref="dataSource"/>
 		</authentication-provider>
-	
 	</authentication-manager>
 	
 	<http auto-config="true" use-expressions="true">
@@ -26,7 +21,9 @@
 		<intercept-url pattern="/register" access="isAnonymous()"/>
 		<intercept-url pattern="/addbook" access="hasRole('ROLE_ADMIN')"/>
 		<intercept-url pattern="/**" access="isAuthenticated()"/>
+		<access-denied-handler error-page="/error"/>
 		<form-login login-page="/login" authentication-failure-url="/loginFailed"  default-target-url="/register"/>
+		<remember-me key="secret"/>
 	</http>
 	
 	<beans:bean id="dataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource">

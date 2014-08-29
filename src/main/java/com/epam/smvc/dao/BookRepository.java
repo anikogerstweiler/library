@@ -15,4 +15,6 @@ public interface BookRepository {
 	List<Book> getBooks();
 	
 	void save(Book book);
+
+	void removeBookById(Long id);
 }

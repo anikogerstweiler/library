@@ -1,6 +1,5 @@
 package com.epam.smvc.service;
 
-import java.util.Date;
 import java.util.List;
 
 import javax.annotation.Resource;
@@ -28,14 +27,16 @@ public class HiredBookServiceImpl implements HiredBookService {
 	@Transactional
 	public String save(HiredBook book) {
 		TransactionStatus status = txManager.getTransaction(new DefaultTransactionDefinition());
-		Date notAvailableTill = repository.save(book);
-		if (notAvailableTill == null) {
+		
+		String available = repository.save(book);
+		
+		if ("available".equals(available)) {
 			txManager.commit(status);
 		} else {
 			txManager.rollback(status);
 		}
 		
-		return notAvailableTill.toString();
+		return available;
 	}
 
 	@Override

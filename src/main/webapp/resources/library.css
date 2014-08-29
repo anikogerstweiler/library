@@ -117,6 +117,7 @@ button {
 	color: #555;
 	display: block;
 	border: 1px solid #999;
+	cursor: pointer;
 }
 
 .menulink {
@@ -219,9 +220,15 @@ em {
 	float: right;
 }
 
-.bookList {
+.loanedBooks {
 	min-height: 731px;
 	max-height: 748px;
+	overflow-y: auto;
+}
+
+.bookList {
+	min-height: 695px;
+	max-height: 722px;
 	overflow-y: auto;
 }
 
@@ -263,6 +270,7 @@ em {
 	float: right;
 	margin-right: 20px;
 	color: #E3FFE5;
+	display: inline;
 }
 
 #reg {
@@ -272,4 +280,26 @@ em {
 
 #loan {
 	margin-top: 15px;
+}
+
+#error {
+	margin-top: 50px;
+	text-align: center;
+}
+
+img {
+	margin-top: 50px;
+}
+
+.removeButton {
+	text-decoration: none;
+}
+
+.removeButton button {
+	margin: 0px;
+}
+
+.deleteimage {
+	width: 15px;
+	margin: 0px;
 }

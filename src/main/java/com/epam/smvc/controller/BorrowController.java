@@ -2,6 +2,7 @@ package com.epam.smvc.controller;
 
 import java.text.DateFormat;
 import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.GregorianCalendar;
@@ -32,34 +33,34 @@ public class BorrowController {
 
 	@RequestMapping(value = "/loan", method = RequestMethod.GET)
 	public String listBooks(final Locale locale, @RequestParam Long id, @RequestParam(defaultValue="true") boolean bookAvailable, 
-			@RequestParam(defaultValue="") String notAvailableTill, final Model model) throws ParseException {
+			@RequestParam(defaultValue="available") String available, final Model model) throws ParseException {
+		
 		setActualDate(locale, model);
 		model.addAttribute("book", bookService.find(id));
 		model.addAttribute("loanForm", new LoanForm());
 		
 		model.addAttribute("bookAvailable", bookAvailable);
-		model.addAttribute("notAvailableTill", notAvailableTill);
+		model.addAttribute("available", available);
+		
+		String actualDate = new SimpleDateFormat("yyyy-MM-dd", Locale.ENGLISH).format(new Date());
+		model.addAttribute("date", actualDate);
 		
 		return "loan";
 	}
 
 	@RequestMapping(value = "/loan", method = RequestMethod.POST)
 	public String borrow(@ModelAttribute("loanForm") LoanForm loanForm, final Model model) {
-		HiredBook book = new HiredBook();
-		book.setBookid(loanForm.getId());
-		Date loanFrom = buildDate(loanForm.getFromDate());
-		book.setFromdate(loanFrom);
-		book.setTodate(calculateEndDate(loanFrom));
-		book.setUsername(SecurityContextHolder.getContext().getAuthentication().getName());
+		HiredBook book = createHiredBook(loanForm);
 		
-		String returnPage = "books";
-		String notAvailableTill = hiredBookService.save(book);
-		if (notAvailableTill != "") {
-			returnPage = "redirect:loan?id=" + loanForm.getId() + "&bookAvailable=false" + "&notAvailableTill=" + notAvailableTill;
+		String available = hiredBookService.save(book);
+		
+		System.out.println("I AM HERE");
+		
+		if (!"available".equals(available)) {
+			return "redirect:/loan?id=" + loanForm.getId() + "&bookAvailable=false" + "&available=" + available;
 		}
 		
-		
-		return returnPage;
+		return "redirect:/books";
 	}
 	
 	@RequestMapping(value = "/loanedbooks", method = RequestMethod.GET)
@@ -69,6 +70,18 @@ public class BorrowController {
 		model.addAttribute("mybooks", hiredBookService.listBooksByUser(SecurityContextHolder.getContext().getAuthentication().getName()));
 		
 		return "loanedbooks";
+	}
+	
+	private HiredBook createHiredBook(LoanForm loanForm) {
+		HiredBook book = new HiredBook();
+		
+		Date borrowable = buildDate(loanForm.getFromDate());
+		book.setBookid(loanForm.getId());
+		book.setFromdate(borrowable);
+		book.setTodate(calculateEndDate(borrowable));
+		book.setUsername(SecurityContextHolder.getContext().getAuthentication().getName());
+		
+		return book;
 	}
 
 	private Date buildDate(String date) {
@@ -98,9 +111,8 @@ public class BorrowController {
 	}
 	
 	private String getDate(final Locale locale) {
-		Date date = new Date();
 		DateFormat dateFormat = DateFormat.getDateTimeInstance(DateFormat.LONG, DateFormat.SHORT, locale);
-		String today = dateFormat.format(date);
+		String today = dateFormat.format(new Date());
 		
 		return today;
 	}

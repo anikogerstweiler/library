@@ -20,18 +20,16 @@
 				
 				<div class="column">
 					<c:if test="${error == true}">
-						<label class="error">Wrong user name or password</label>
+						<label class="errorBox">Wrong user name or password</label>
 					</c:if>
 					
-<!--                     <label for="name" class="inputElement"> Username </label> -->
                     <input type="text" id="name" name="j_username" class="inputElement" placeholder=" Username" autofocus="autofocus">
                     
-<!--                     <label for="pwd" class="inputElement">Password</label> -->
                     <input type="password" id="pwd" name="j_password" class="inputElement" placeholder=" Password">
                     
 	                <button type="submit">Login</button>
 	                <label class="rememberme">
-	                	<input type="checkbox" name="_spring_security_remember_me">Remember me
+	                	<input type="checkbox" name="_spring_security_remember_me" checked="checked">Remember me
 	                </label>
                 </div>
                 
