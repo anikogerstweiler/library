@@ -53,8 +53,6 @@ public class BorrowController {
 		
 		String available = hiredBookService.save(book);
 		
-		System.out.println("I AM HERE");
-		
 		if (!"available".equals(available)) {
 			return "redirect:/loan?id=" + loanForm.getId() + "&bookAvailable=false" + "&available=" + available;
 		}

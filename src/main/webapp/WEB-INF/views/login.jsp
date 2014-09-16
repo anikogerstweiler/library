@@ -20,7 +20,7 @@
 				
 				<div class="column">
 					<c:if test="${error == true}">
-						<label class="errorBox">Wrong user name or password</label>
+						<label class="errorMessage">Wrong user name or password</label>
 					</c:if>
 					
                     <input type="text" id="name" name="j_username" class="inputElement" placeholder=" Username" autofocus="autofocus">

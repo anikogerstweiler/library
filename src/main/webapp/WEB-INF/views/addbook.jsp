@@ -25,27 +25,27 @@
 							<label for="title" class="inputElement">Title</label>
 							<form:input type="text" id="title" class="inputElement ${not empty status.getFieldError('title') ? 'error' : '' }" 
 								name="title" path="title" autofocus="autofocus"/>
-							<form:errors path="title" cssClass="errorBox"/>
+							<form:errors path="title" cssClass="errorMessage"/>
 						
 							<label for="author" class="inputElement">Author</label>
 							<form:input type="text" id="author" class="inputElement ${not empty status.getFieldError('author') ? 'error' : '' }"  
 								name="author" path="author"/>
-							<form:errors path="author" cssClass="errorBox"/>
+							<form:errors path="author" cssClass="errorMessage"/>
 							
 							<label for="year" class="inputElement">Year</label>
 							<form:input type="year" id="year" class="inputElement ${not empty status.getFieldError('author') ? 'error' : '' }" 
 								name="year" path="year"/>
-							<form:errors path="year" cssClass="errorBox"/>
+							<form:errors path="year" cssClass="errorMessage"/>
 							
 							<label for="isbn" class="inputElement">ISBN</label>
 							<form:input type="text" id="isbn" class="inputElement ${not empty status.getFieldError('author') ? 'error' : '' }" 
 								name="isbn" path="isbn"/>
-							<form:errors path="isbn" cssClass="errorBox"/>
+							<form:errors path="isbn" cssClass="errorMessage"/>
 							
 							<label for="description" class="inputElement">Description</label>
 							<form:textarea id="description" class="inputElement ${not empty status.getFieldError('author') ? 'error' : '' }" 
 								name="description" path="description" />
-							<form:errors path="description" cssClass="errorBox"/>
+							<form:errors path="description" cssClass="errorMessage"/>
 							
 							<button type="submit">Save</button>
 						</div>

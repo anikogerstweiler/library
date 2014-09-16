@@ -110,7 +110,6 @@ button {
 	border-radius: 3px;
 	height: 30px;
 	width: 100px;
-/* 	background-color: #DEDDD9; */
 	background-color: white;
 	font-family: 'minion';
 	font-weight: bold;
@@ -158,10 +157,6 @@ fieldset {
 	width: 95%;
 }
 
-.topline {
-	
-}
-
 .attributes {
 	background-color: #E3FFE5;
 	padding: 5px;
@@ -183,12 +178,11 @@ fieldset {
 }
 
 #addBook {
-	background-color: #E3FFE5;
 	padding-left: 20px;	
 }
 
-tbody tr:nth-child(odd) {
-   background-color:#E3FFE5;
+tbody tr:nth-child(odd), #addBook {
+	background-color:#E3FFE5;
 }
 
 tr {
@@ -213,12 +207,6 @@ em {
 	float: right;
 	border-radius: 5px;
 	width: 200px;	
-}
-
-.magnifyingglass {
-	width: 20px; 
-	height: 20px;
-	float: right;
 }
 
 .loanedBooks {
@@ -262,12 +250,17 @@ em {
 	border: 1px solid red;
 }
 
-.errorBox {
+.errorMessage {
 	color: red;
 	display: block;
 }
 
-.alignedright {
+#noPermissionMessage {
+	margin-top: 50px;
+	text-align: center;
+}
+
+.loggedUserName {
 	float: right;
 	margin-right: 20px;
 	color: #E3FFE5;
@@ -283,24 +276,16 @@ em {
 	margin-top: 15px;
 }
 
-#error {
-	margin-top: 50px;
-	text-align: center;
-}
-
 img {
 	margin-top: 50px;
 }
 
-.removeButton {
+.removeIcon {
 	text-decoration: none;
-}
-
-.removeButton button {
 	margin: 0px;
 }
 
-.deleteimage {
+.removeImage {
 	width: 15px;
 	margin: 0px;
 }

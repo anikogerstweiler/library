@@ -36,8 +36,8 @@
 								<td>${book.year}</td>
 								<td>${book.isbn}</td>
 								<td>
-									<a href="<c:url value="/removebook/${book.id}"/>" class="removeButton">
-										<img src="<c:url value="/resources/delete.png"/>" class="deleteimage">
+									<a href="<c:url value="/removebook/${book.id}"/>" class="removeIcon">
+										<img src="<c:url value="/resources/delete.png"/>" class="removeImage">
 									</a>
 								</td>
 							</tr>

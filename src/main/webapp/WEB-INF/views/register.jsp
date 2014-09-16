@@ -29,21 +29,21 @@
 							<label for="username" class="inputElement">Username</label>
 							<form:input type="text" id="username" class="inputElement ${not empty status.getFieldError('username') ? 'error' : '' }" 
 								name="username" path="username" placeholder=" Username"/>
-							<form:errors path="username" cssClass="errorBox"/>
+							<form:errors path="username" cssClass="errorMessage"/>
 						
 							<label for="firstName" class="inputElement">First name</label>
 							<form:input type="text" id="firstName" class="inputElement ${not empty status.getFieldError('firstName') ? 'error' : '' }"  
 								name="firstName" path="firstName" placeholder=" First name"/>
-							<form:errors path="firstName" cssClass="errorBox"/>
+							<form:errors path="firstName" cssClass="errorMessage"/>
 							
 							<label for="lastName" class="inputElement">Last name</label>
 							<form:input type="text" id="lastName" class="inputElement ${not empty status.getFieldError('lastName') ? 'error' : '' }" 
 								name="lastName" path="lastName" placeholder=" Last name"/>
-							<form:errors path="lastName" cssClass="errorBox"/>
+							<form:errors path="lastName" cssClass="errorMessage"/>
 							
 							<label for="pwd" class="inputElement">Password</label>
 							<form:input type="password" id="pwd" class="inputElement ${not empty status.getFieldError('pwd') ? 'error' : '' }" name="pwd" path="pwd"/>
-							<form:errors path="pwd" cssClass="errorBox"/>
+							<form:errors path="pwd" cssClass="errorMessage"/>
 							
 							<button type="submit">Register</button>
 						</div>

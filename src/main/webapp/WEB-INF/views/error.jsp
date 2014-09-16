@@ -17,7 +17,7 @@
 				<h1>Error</h1>
 			</div>
 			
-			<div class="booklist" id="error">
+			<div class="booklist" id="noPermissionMessage">
 				<h3>Sorry, you have no permission to watch this page!</h3>
 	            <img alt="bookshelf" src="<c:url value="/resources/bookshelf.png"/>" >
             </div>
