@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.epam.smvc.form.LoanForm;
 import com.epam.smvc.model.HiredBook;
@@ -48,13 +49,14 @@ public class BorrowController {
 	}
 
 	@RequestMapping(value = "/loan", method = RequestMethod.POST)
-	public String borrow(@ModelAttribute("loanForm") LoanForm loanForm, final Model model) {
+	public String borrow(@ModelAttribute("loanForm") LoanForm loanForm, final Model model, RedirectAttributes redirectAttributes) {
 		HiredBook book = createHiredBook(loanForm);
 		
 		String available = hiredBookService.save(book);
 		
 		if (!"available".equals(available)) {
-			return "redirect:/loan?id=" + loanForm.getId() + "&bookAvailable=false" + "&available=" + available;
+			redirectAttributes.addAttribute("id", loanForm.getId()).addAttribute("bookAvailable", Boolean.FALSE).addAttribute("available", available);
+			return "redirect:/loan?";
 		}
 		
 		return "redirect:/books";

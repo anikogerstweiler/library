@@ -11,6 +11,7 @@
 	<section id="menu">
 		<%@ include file="menu.jspf" %>
 	</section>
+	
 	<main class="container">
 	<section id="books" ng-controller="bookCtrl">
 		<div class="header">
@@ -18,23 +19,23 @@
 		</div>
 		
 		<div class="bookList">
-			<input type="text" id="search" placeholder=" Search for book" ng-model="search">
-<!-- 			<hr class="bookline"> -->
+			<input type="text" id="search" placeholder=" Search for author, title" ng-model="search">
 			<ul ng-repeat="book in filteredBooks = (books | filter:search) | startFrom:(currentPage-1)*entryLimit | limitTo:entryLimit">
 				<li>
 					<fieldset>
 						<h2>{{book.title}}</h2>
 						<small id="author">{{book.author}}</small>
-						<p>
-							{{book.description}}
-						</p>
+						<p>{{book.description}}</p>
+						
 						<div class="attributes">
 							<span class="attribute">
 								<em>Publication year: </em> {{book.year}}
 							</span>
+							
 							<span class="attribute">
 								<em>ISBN: </em> {{book.isbn}}
 							</span>
+							
 							<span class="attribute">
 								<sec:authorize access="hasRole('ROLE_USER')">
 									<a href="/smvc/loan?id={{book.id}}" class="borrow"><em>Loan</em></a>
@@ -45,7 +46,6 @@
 				</li>
 				<hr class="bookline">
 			</ul>
-		
 		</div>
 			<div class="pagination">
 				<pagination data-boundary-links="true"
