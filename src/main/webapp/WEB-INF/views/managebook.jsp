@@ -14,10 +14,11 @@
 	<main class="container">
 		<section id="books">
 			<div class="header">
-				<h1>Remove Book</h1>
+				<h1>Manage Books</h1>
 			</div>
 			
 			<div class="loanedBooks">
+<!-- 			<button>Add book</button> -->
 				<table class="hiredbooks">
 					<thead>
 						<tr>
@@ -36,10 +37,14 @@
 								<td>${book.year}</td>
 								<td>${book.isbn}</td>
 								<td>
-									<a href="<c:url value="/removebook/${book.id}"/>" class="removeIcon">
-										<img src="<c:url value="/resources/delete.png"/>" class="removeImage">
+									<img src="<c:url value="/resources/details.png"/>" class="crudImage crudIcon" onclick="showDetails(${book.id}, '${book.description}')">
+									<a href="<c:url value="/managebook/${book.id}"/>" class="crudIcon">
+										<img src="<c:url value="/resources/delete.png"/>" class="crudImage">
 									</a>
 								</td>
+							</tr>
+							
+							<tr id="${book.id}">
 							</tr>
 						</c:forEach>
 					</tbody>
@@ -52,4 +57,5 @@
 		</section>
 	</main>
 </body>
+<script src="<c:url value="/resources/js/addBook.js"/>"></script>
 </html>

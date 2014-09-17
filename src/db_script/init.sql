@@ -51,10 +51,7 @@ insert into books(author, title, year, isbn, description) values("Eric M. Burke"
 Ant: The Definitive Guide, 2nd Edition has been reworked to reflect these changes for Java developers everywhere. Topics covered include everything from 
 downloading and installing, to using Ant to build Web applications, to using Ant to test code.");
 insert into books(author, title, year, isbn, description) values("James Goodwill", "Apache Tomcat 7", 2011, "978-1430237235", 
-"Apache Tomcat is the most popular open-source de-facto Java Web application server, standard for today's Web developers using JSP/Servlets. 
-Apache Tomcat 7 covers details on installation and administration of Apache Tomcat 7. It explains key parts of the Tomcat architecture, and 
-provides an introduction to Java Servlet and JSP APIs in the context of the Apache Tomcat server. In addition to basic concepts and administration tasks, 
-Apache Tomcat 7 covers some of the most frequently used advanced features of Tomcat.");
+"Apache Tomcat is the most popular open-source de-facto Java Web application server, standard for todays Web developers using JSP/Servlets. Apache Tomcat 7 covers details on installation and administration of Apache Tomcat 7. It explains key parts of the Tomcat architecture, and provides an introduction to Java Servlet and JSP APIs in the context of the Apache Tomcat server. In addition to basic concepts and administration tasks, Apache Tomcat 7 covers some of the most frequently used advanced features of Tomcat.");
 insert into books(author, title, year, isbn, description) values("Russell Miles", "AspectJ Cookbook", 2004, "0-596-00654-3",
 "Intended for experienced Java programmers, this reference describes the tools and environments that support 
 development using AspectJ, the different constructs that the AspectJ language adds to Java, and aspect-oriented design patterns. 

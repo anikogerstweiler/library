@@ -38,22 +38,29 @@ public class BookController {
 		return "books";
 	}
 	
-	@RequestMapping(value = "/removebook", method = RequestMethod.GET)
+	@RequestMapping(value = "/managebook", method = RequestMethod.GET)
 	public String removeBook(final Locale locale, final Model model) {
 		setActualDate(locale, model);
 		
-		model.addAttribute("books", bookService.getBooks());
+		List<Book> books = bookService.getBooks();
 		
-		return "removebook";
+		for (Book book : books) {
+			book.setDescription(book.getDescription().replaceAll("\n", " "));
+			book.setDescription(book.getDescription().replaceAll("\r", ""));
+			book.setDescription(book.getDescription().replaceAll("'", "\\'"));
+			book.setDescription(book.getDescription().replaceAll("/", "\\/"));
+		}
+		
+		model.addAttribute("books", books);
+		
+		return "managebook";
 	}
 	
-	@RequestMapping(value = "/removebook/{id}", method = RequestMethod.GET)
+	@RequestMapping(value = "/managebook/{id}", method = RequestMethod.GET)
 	public String removeBookById(@PathVariable Long id, final Locale locale, final Model model) {
-		setActualDate(locale, model);
-		
 		bookService.removeBookById(id);
 		
-		return "redirect:/removebook";
+		return "redirect:/managebook";
 	}
 	
 	@RequestMapping(value = "/addbook", method = RequestMethod.GET)

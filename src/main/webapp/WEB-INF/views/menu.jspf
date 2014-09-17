@@ -25,7 +25,7 @@
 	
 	<sec:authorize access="hasRole('ROLE_ADMIN')">
 		<li>
-			<a href="/smvc/removebook" class="menulink">Remove book</a>
+			<a href="/smvc/managebook" class="menulink">Manage books</a>
 		</li>
 	</sec:authorize>
 	
