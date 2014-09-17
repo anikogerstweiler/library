@@ -16,3 +16,12 @@ function showDetails(id, description) {
 function addElement(key, value) {
 	visible[key] = value;
 }
+
+function popitup(url) {
+	newwindow = window.open(url,'name','directories=no,titlebar=no,toolbar=no,location=no,status=no,menubar=no,scrollbars=no,resizable=no,width=400,height=350');
+	
+	if (window.focus) {
+		newwindow.focus()
+	}
+	return false;
+}

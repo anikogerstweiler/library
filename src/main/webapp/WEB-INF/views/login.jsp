@@ -6,6 +6,7 @@
 	<title>Login</title>
 	<link rel="stylesheet" type="text/css" href="resources/reset.css">
     <link rel="stylesheet" type="text/css" href="resources/library.css">
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"> 
 </head>
 <body>
 	<section id="menu">

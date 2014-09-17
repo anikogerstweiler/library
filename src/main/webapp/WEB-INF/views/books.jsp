@@ -3,9 +3,10 @@
 <%@ page session="false"%>
 <html>
 <head>
-<title>Books</title>
-<link rel="stylesheet" type="text/css" href="resources/reset.css">
-<link rel="stylesheet" type="text/css" href="resources/library.css">
+	<title>Books</title>
+	<link rel="stylesheet" type="text/css" href="resources/reset.css">
+	<link rel="stylesheet" type="text/css" href="resources/library.css">
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"> 
 </head>
 <body ng-app="bookApp">
 	<section id="menu">

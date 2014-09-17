@@ -42,6 +42,8 @@ public class BookController {
 	public String removeBook(final Locale locale, final Model model) {
 		setActualDate(locale, model);
 		
+		model.addAttribute("addBookForm", new AddBookForm());
+		
 		List<Book> books = bookService.getBooks();
 		
 		for (Book book : books) {
