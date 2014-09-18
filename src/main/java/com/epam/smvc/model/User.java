@@ -42,7 +42,7 @@ public class User implements UserDetails {
 
 	@Column(name = "password")
 	@NotEmpty(message="Please enter your password")
-	@Size(min=0, max=50, message="The password must between 0 and 50 characters")
+	@Size(min=0, max=100, message="The password must between 0 and 50 characters")
 	private String password;
 
 	@Column(name = "enabled")

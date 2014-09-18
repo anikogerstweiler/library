@@ -53,22 +53,33 @@ public class HomeController {
 			return "register";
 		}
 		
-		BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();	
-		user.setPassword(encoder.encode(escapeInvalidCharacters(user.getPassword())));
-		user.setEnabled(true);
+		setUserProperties(user);
 		userService.save(user);
 		
-		Authority authority = new Authority();
-		authority.setUsername(escapeInvalidCharacters(user.getUsername()));
-		authority.setAuthority(ROLE_USER);
+		Authority authority = setAuthorityProperties(user);
 		userService.save(authority);
 		
 		return "redirect:/" + "login";
 	}
-	
+
 	@RequestMapping(value="/error", method = RequestMethod.GET)
 	public String error() {
 		return "error";
+	}
+	
+	private Authority setAuthorityProperties(User user) {
+		Authority authority = new Authority();
+		authority.setUsername(escapeInvalidCharacters(user.getUsername()));
+		authority.setAuthority(ROLE_USER);
+		
+		return authority;
+	}
+
+	private void setUserProperties(User user) {
+		BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();	
+		System.out.println("PWD " + encoder.encode(escapeInvalidCharacters(user.getPassword())));
+		user.setPassword(encoder.encode(escapeInvalidCharacters(user.getPassword())));
+		user.setEnabled(true);
 	}
 	
 	private String escapeInvalidCharacters(String input) {
