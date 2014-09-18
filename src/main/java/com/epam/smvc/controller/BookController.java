@@ -135,14 +135,18 @@ public class BookController {
 	}
 	
 	private Book escapeInputIn(Book book) {
-		book.setAuthor(book.getAuthor().replaceAll(START_TAG, "&lt;").replaceAll(END_TAG, "&gt;"));
-		book.setDescription(book.getDescription().replaceAll(START_TAG, "&lt;").replaceAll(END_TAG, "&gt;"));
-		book.setIsbn(book.getIsbn().replaceAll(START_TAG, "&lt;").replaceAll(END_TAG, "&gt;"));
-		book.setTitle(book.getTitle().replaceAll(START_TAG, "&lt;").replaceAll(END_TAG, "&gt;"));
+		book.setAuthor(escapeInvalidCharacters(book.getAuthor()));
+		book.setDescription(escapeInvalidCharacters(book.getDescription()));
+		book.setIsbn(escapeInvalidCharacters(book.getIsbn()));
+		book.setTitle(escapeInvalidCharacters(book.getTitle()));
 		
 		return book;
 	}
 	
+	private String escapeInvalidCharacters(String input) {
+		return input.replaceAll(START_TAG, "&lt;").replaceAll(END_TAG, "&gt;");
+	}
+
 	private String getDate(final Locale locale) {
 		String actualDate = new SimpleDateFormat(ACTUAL_DATE_FORMAT, Locale.ENGLISH).format(new Date());
 		

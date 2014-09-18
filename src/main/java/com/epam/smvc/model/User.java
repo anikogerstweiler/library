@@ -12,7 +12,9 @@ import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.Transient;
+import javax.validation.constraints.Size;
 
+import org.hibernate.validator.constraints.NotEmpty;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
@@ -24,15 +26,23 @@ public class User implements UserDetails {
 
 	@Id
 	@Column(name = "username")
+	@NotEmpty(message="Please enter a username")
+	@Size(min=4, max=50, message="Username must be at least 4 character and maximum 50 character")
 	private String username;
 
 	@Column(name = "firstname")
+	@NotEmpty(message="Please enter your first name")
+	@Size(min=0, max=50, message="The first name must between 0 and 50 characters")
 	private String firstname;
 
 	@Column(name = "lastname")
+	@NotEmpty(message="Please enter your last name")
+	@Size(min=0, max=50, message="The last name must between 0 and 50 characters")
 	private String lastname;
 
 	@Column(name = "password")
+	@NotEmpty(message="Please enter your password")
+	@Size(min=0, max=50, message="The password must between 0 and 50 characters")
 	private String password;
 
 	@Column(name = "enabled")
