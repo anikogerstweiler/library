@@ -16,9 +16,9 @@
 	<main class="container">
 		<section id="books">
 			<div class="header">
-				<h1>Update Book</h1>
+				<h1>Update book information</h1>
 			</div>
-			<div class="bookList" id="updateBook">
+			<div class="bookList" id="addBook">
 				<form:form role="form" method="POST" action="/smvc/updatebook" commandName="book">
 					<fieldset>
 						<div>
@@ -50,6 +50,7 @@
 							<form:errors path="description" cssClass="errorMessage"/>
 							
 							<button type="submit">Save</button>
+							<button type="button" VALUE="Cancel" onClick="history.go(-1);return true;">Cancel</button>
 						</div>
 					</fieldset>
 				</form:form>

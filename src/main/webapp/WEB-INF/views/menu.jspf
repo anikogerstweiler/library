@@ -5,7 +5,7 @@
 		</li>
 	</sec:authorize>
 	
-	<sec:authorize access="isAuthenticated()">
+	<sec:authorize access="hasRole('ROLE_USER')">
 		<li>
 			<a href="/smvc/books" class="menulink">Books</a>
 		</li>
@@ -25,7 +25,7 @@
 	
 	<sec:authorize access="hasRole('ROLE_ADMIN')">
 		<li>
-			<a href="/smvc/managebook" class="menulink">Manage books</a>
+			<a href="/smvc/maintainbook" class="menulink">Books</a>
 		</li>
 	</sec:authorize>
 	

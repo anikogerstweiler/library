@@ -38,7 +38,7 @@ public class BookController {
 		return "books";
 	}
 	
-	@RequestMapping(value = "/managebook", method = RequestMethod.GET)
+	@RequestMapping(value = "/maintainbook", method = RequestMethod.GET)
 	public String removeBook(final Locale locale, final Model model) {
 		setActualDate(locale, model);
 		
@@ -53,18 +53,19 @@ public class BookController {
 		
 		model.addAttribute("books", books);
 		
-		return "managebook";
+		return "maintainbook";
 	}
 	
-	@RequestMapping(value = "/managebook/{id}", method = RequestMethod.GET)
+	@RequestMapping(value = "/maintainbook/{id}", method = RequestMethod.GET)
 	public String removeBookById(@PathVariable Long id, final Locale locale, final Model model) {
 		bookService.removeBookById(id);
 		
-		return "redirect:/managebook";
+		return "redirect:/maintainbook";
 	}
 	
 	@RequestMapping(value = "/updatebook", method = RequestMethod.GET)
 	public String createUpdateBookForm(@RequestParam Long id, final Locale locale, final Model model) {
+		setActualDate(locale, model);
 		Book book = bookService.find(id);
 		model.addAttribute("book", book);
 		
@@ -82,7 +83,7 @@ public class BookController {
 		
 		bookService.updateBook(book);
 		
-		return "redirect:/managebook";
+		return "redirect:/maintainbook";
 	}
 	
 	@RequestMapping(value = "/addbook", method = RequestMethod.GET)

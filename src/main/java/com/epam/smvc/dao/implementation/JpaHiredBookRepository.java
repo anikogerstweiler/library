@@ -33,7 +33,6 @@ public class JpaHiredBookRepository extends JpaGenericRepository implements Hire
 
 	@Override
 	public String save(HiredBook book) {
-		System.out.println("TODATE: " + book.getTodate());
 		String available = isBookAvailable(book.getFromdate(), book.getTodate(), book.getBookid());
 		if ("available".equals(available)) {
 			entityManager.persist(book);

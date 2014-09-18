@@ -114,7 +114,6 @@ button {
 	font-family: 'minion';
 	font-weight: bold;
 	color: #555;
-	display: block;
 	border: 1px solid #999;
 	cursor: pointer;
 }
