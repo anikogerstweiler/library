@@ -1,13 +1,15 @@
 package com.epam.smvc.model;
 
-import java.sql.Blob;
-
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.Table;
-import javax.persistence.Transient;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
+
+import org.hibernate.validator.constraints.NotEmpty;
+import org.hibernate.validator.constraints.Range;
 
 @Entity
 @Table(name = "books")
@@ -18,22 +20,26 @@ public class Book {
 	private Long id;
 
 	@Column(name = "author")
+	@NotEmpty(message="Please enter the author")
+	@Size(min=0, max=50)
 	private String author;
 
 	@Column(name = "title")
+	@NotEmpty(message="Please enter the title")
 	private String title;
 
 	@Column(name = "year")
+	@NotNull(message="Please enter the publication year")
+	@Range(min=1000, max=2014, message="Year must between 1000 and 2014")
 	private Long year;
 
 	@Column(name = "isbn")
+	@NotEmpty(message="Please enter the ISBN number")
+	@Size(min=0, max=20)
 	private String isbn;
-
-	@Transient
-	@Column(name = "image")
-	private Blob image;
 	
 	@Column(name = "description")
+	@Size(min=0, max=50, message="The description must between 0 and 50 characters")
 	private String description;
 
 	public Long getId() {
@@ -76,14 +82,6 @@ public class Book {
 		this.isbn = isbn;
 	}
 
-	public Blob getImage() {
-		return image;
-	}
-
-	public void setImage(Blob image) {
-		this.image = image;
-	}
-
 	public String getDescription() {
 		return description;
 	}
@@ -95,7 +93,7 @@ public class Book {
 	@Override
 	public String toString() {
 		return "Book [id=" + id + ", author=" + author + ", title=" + title
-				+ ", year=" + year + ", isbn=" + isbn + ", image=" + image
+				+ ", year=" + year + ", isbn=" + isbn
 				+ ", description=" + description + "]";
 	}
 }

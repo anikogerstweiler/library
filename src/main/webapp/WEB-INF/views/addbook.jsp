@@ -20,7 +20,7 @@
 			</div>
 			
 			<div class="bookList" id="addBook">
-				<form:form role="form" method="POST" action="/smvc/addbook" commandName="addBookForm" >
+				<form:form role="form" method="POST" action="/smvc/addbook" commandName="book" >
 					<fieldset>
 						<div>
 							<label for="title" class="inputElement">Title</label>

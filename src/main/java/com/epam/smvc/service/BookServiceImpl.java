@@ -54,4 +54,12 @@ public class BookServiceImpl implements BookService {
 		txManager.commit(status);
 	}
 
+	@Transactional
+	@Override
+	public void updateBook(Book book) {
+		TransactionStatus status = txManager.getTransaction(new DefaultTransactionDefinition());
+		bookRepository.updateBook(book);
+		txManager.commit(status);
+	}
+
 }

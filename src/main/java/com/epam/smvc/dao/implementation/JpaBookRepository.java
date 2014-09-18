@@ -56,4 +56,17 @@ public class JpaBookRepository extends JpaGenericRepository implements BookRepos
 		removeBookFromHiredBook.executeUpdate();
 		removeBookQuery.executeUpdate();
 	}
+
+	@Override
+	public void updateBook(Book book) {
+		Query updateQuery = entityManager.createQuery("UPDATE Book b Set b.title  = :title, b.author = :author, b.description = :description, b.isbn = :isbn, b.year = :year where b.id = :id ");
+		updateQuery.setParameter("id", book.getId())
+			.setParameter("title", book.getTitle())
+			.setParameter("author", book.getAuthor())
+			.setParameter("isbn", book.getIsbn())
+			.setParameter("year", book.getYear())
+			.setParameter("description", book.getDescription());
+		
+		updateQuery.executeUpdate();
+	}
 }

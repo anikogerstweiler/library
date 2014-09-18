@@ -17,9 +17,9 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import com.epam.smvc.form.AddBookForm;
 import com.epam.smvc.model.Book;
 import com.epam.smvc.service.BookService;
 
@@ -42,8 +42,6 @@ public class BookController {
 	public String removeBook(final Locale locale, final Model model) {
 		setActualDate(locale, model);
 		
-		model.addAttribute("addBookForm", new AddBookForm());
-		
 		List<Book> books = bookService.getBooks();
 		
 		for (Book book : books) {
@@ -65,25 +63,45 @@ public class BookController {
 		return "redirect:/managebook";
 	}
 	
+	@RequestMapping(value = "/updatebook", method = RequestMethod.GET)
+	public String createUpdateBookForm(@RequestParam Long id, final Locale locale, final Model model) {
+		Book book = bookService.find(id);
+		model.addAttribute("book", book);
+		
+		return "updatebook";
+	}
+	
+	@RequestMapping(value = "/updatebook", method = RequestMethod.POST)
+	public String updateBook(@Valid @ModelAttribute("book") Book book, BindingResult bindingResult, final Model model, final Locale locale) {
+		if (bindingResult.hasErrors()) {
+			model.addAttribute("status", bindingResult);
+			setActualDate(locale, model);
+			
+			return "updatebook";
+		}
+		
+		bookService.updateBook(book);
+		
+		return "redirect:/managebook";
+	}
+	
 	@RequestMapping(value = "/addbook", method = RequestMethod.GET)
-	public String createForm(final Locale locale, final Model model) {
+	public String createAddForm(final Locale locale, final Model model) {
 		setActualDate(locale, model);
 		
-		model.addAttribute("addBookForm", new AddBookForm());
+		model.addAttribute("book", new Book());
 		
 		return "addbook";
 	}
 	
 	@RequestMapping(value = "/addbook", method = RequestMethod.POST)
-	public String addBook(@Valid @ModelAttribute("addBookForm") AddBookForm bookForm, BindingResult bindingResult, final Model model, final Locale locale) {
+	public String addBook(@Valid @ModelAttribute("book") Book book, BindingResult bindingResult, final Model model, final Locale locale) {
 		if (bindingResult.hasErrors()) {
 			model.addAttribute("status", bindingResult);
 			setActualDate(locale, model);
 			
 			return "addbook";
 		}
-		
-		Book book = createBook(bookForm);
 		
 		bookService.save(book);
 		
@@ -105,18 +123,6 @@ public class BookController {
 		}
 		
 		return result;
-	}
-	
-	private Book createBook(AddBookForm bookForm) {
-		Book book = new Book();
-		
-		book.setAuthor(bookForm.getAuthor());
-		book.setDescription(bookForm.getDescription());
-		book.setIsbn(bookForm.getIsbn());
-		book.setTitle(bookForm.getTitle());
-		book.setYear(bookForm.getYear());
-		
-		return book;
 	}
 	
 	private String getDate(final Locale locale) {
