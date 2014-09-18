@@ -16,7 +16,7 @@
 	<main class="container">
 		<section id="books">
 			<div class="header">
-				<h1>Books</h1>
+				<h1>Add new book</h1>
 			</div>
 			
 			<div class="bookList" id="addBook">

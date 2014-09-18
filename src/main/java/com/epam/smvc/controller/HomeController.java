@@ -7,6 +7,7 @@ import java.util.Locale;
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -14,7 +15,6 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-
 import com.epam.smvc.model.Authority;
 import com.epam.smvc.model.User;
 import com.epam.smvc.service.UserService;
@@ -33,6 +33,9 @@ public class HomeController {
 	@RequestMapping(value = "/", method = RequestMethod.GET)
 	public String home(final Model model) {
 
+		if ("admin".equals(SecurityContextHolder.getContext().getAuthentication().getName())) {
+			return "redirect:" + "/maintainbook";
+		}
 		return "redirect:" + "/books";
 	}
 	
@@ -77,7 +80,6 @@ public class HomeController {
 
 	private void setUserProperties(User user) {
 		BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();	
-		System.out.println("PWD " + encoder.encode(escapeInvalidCharacters(user.getPassword())));
 		user.setPassword(encoder.encode(escapeInvalidCharacters(user.getPassword())));
 		user.setEnabled(true);
 	}

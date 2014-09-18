@@ -19,13 +19,13 @@
 	
 	<sec:authorize access="hasRole('ROLE_ADMIN')">
 		<li>
-			<a href="/smvc/addbook" class="menulink">Add book</a>
+			<a href="/smvc/maintainbook" class="menulink">Books</a>
 		</li>
 	</sec:authorize>
 	
 	<sec:authorize access="hasRole('ROLE_ADMIN')">
 		<li>
-			<a href="/smvc/maintainbook" class="menulink">Books</a>
+			<a href="/smvc/addbook" class="menulink">Add book</a>
 		</li>
 	</sec:authorize>
 	

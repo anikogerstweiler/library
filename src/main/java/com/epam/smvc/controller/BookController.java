@@ -29,6 +29,7 @@ public class BookController {
 	private static final String ACTUAL_DATE_FORMAT = "EEE MMM d, yyyy";
 	private static final String END_TAG = ">";
 	private static final String START_TAG = "<";
+	private static final int MAX_LENGTH = 35;
 	
 	@Autowired
 	private BookService bookService;
@@ -48,7 +49,9 @@ public class BookController {
 		
 		List<Book> books = bookService.getBooks();
 		
-		escapeWhitespaceFrom(books);
+		setShortNamesFor(books);
+		
+		escapeWhitespaceFromBookDescription(books);
 		
 		model.addAttribute("books", books);
 		
@@ -63,7 +66,7 @@ public class BookController {
 	}
 	
 	@RequestMapping(value = "/updatebook", method = RequestMethod.GET)
-	public String createUpdateBookForm(@RequestParam Long id, final Locale locale, final Model model) {
+	public String preInitUpdate(@RequestParam Long id, final Locale locale, final Model model) {
 		setActualDate(locale, model);
 		Book book = bookService.find(id);
 		model.addAttribute("book", book);
@@ -86,7 +89,7 @@ public class BookController {
 	}
 	
 	@RequestMapping(value = "/addbook", method = RequestMethod.GET)
-	public String createAddForm(final Locale locale, final Model model) {
+	public String preInitAdd(final Locale locale, final Model model) {
 		setActualDate(locale, model);
 		
 		model.addAttribute("book", new Book());
@@ -95,7 +98,7 @@ public class BookController {
 	}
 	
 	@RequestMapping(value = "/addbook", method = RequestMethod.POST)
-	public String addBook(@Valid @ModelAttribute("book") Book book, BindingResult bindingResult, final Model model, final Locale locale) {
+	public String addNewBook(@Valid @ModelAttribute("book") Book book, BindingResult bindingResult, final Model model, final Locale locale) {
 		if (bindingResult.hasErrors()) {
 			model.addAttribute("status", bindingResult);
 			setActualDate(locale, model);
@@ -125,7 +128,24 @@ public class BookController {
 		return result;
 	}
 	
-	private void escapeWhitespaceFrom(List<Book> books) {
+	private void setShortNamesFor(List<Book> books) {
+		for (Book book : books) {
+			book.setShortTitle(getShortName(book.getTitle()));
+			book.setShortAuthor(getShortName(book.getAuthor()));
+		}
+	}
+	
+	private String getShortName(String input) {
+		  String shortName = input;
+		  
+		  if(input.length() > MAX_LENGTH){
+		   shortName = input.substring(0, MAX_LENGTH - 4) + "...";
+		  }
+		  
+		  return shortName;
+		 }
+	
+	private void escapeWhitespaceFromBookDescription(List<Book> books) {
 		for (Book book : books) {
 			book.setDescription(book.getDescription().replaceAll("\n", " "));
 			book.setDescription(book.getDescription().replaceAll("\r", ""));

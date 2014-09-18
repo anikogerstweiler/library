@@ -33,8 +33,8 @@
 					<tbody>
 						<c:forEach var="book" items="${books}">
 							<tr>
-								<td>${book.title}</td>
-								<td>${book.author}</td>
+								<td><abbr title="${book.title}">${book.shortTitle}</abbr></td>
+								<td><abbr title="${book.author}">${book.shortAuthor}</abbr></td>
 								<td>${book.year}</td>
 								<td>${book.isbn}</td>
 								<td>

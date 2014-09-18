@@ -5,6 +5,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import javax.persistence.Transient;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
@@ -41,6 +42,28 @@ public class Book {
 	@Column(name = "description")
 	@Size(min=0, max=50, message="The description must between 0 and 50 characters")
 	private String description;
+	
+	@Transient
+	private String shortTitle;
+	
+	@Transient
+	private String shortAuthor;
+	
+	public String getShortAuthor() {
+		return shortAuthor;
+	}
+
+	public void setShortAuthor(String shortAuthor) {
+		this.shortAuthor = shortAuthor;
+	}
+
+	public String getShortTitle() {
+		return shortTitle;
+	}
+
+	public void setShortTitle(String shortTitle) {
+		this.shortTitle = shortTitle;
+	}
 
 	public Long getId() {
 		return id;
