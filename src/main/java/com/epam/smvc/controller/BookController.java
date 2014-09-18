@@ -26,6 +26,10 @@ import com.epam.smvc.service.BookService;
 @Controller
 public class BookController {
 	
+	private static final String ACTUAL_DATE_FORMAT = "EEE MMM d, yyyy";
+	private static final String END_TAG = ">";
+	private static final String START_TAG = "<";
+	
 	@Autowired
 	private BookService bookService;
 
@@ -44,18 +48,13 @@ public class BookController {
 		
 		List<Book> books = bookService.getBooks();
 		
-		for (Book book : books) {
-			book.setDescription(book.getDescription().replaceAll("\n", " "));
-			book.setDescription(book.getDescription().replaceAll("\r", ""));
-			book.setDescription(book.getDescription().replaceAll("'", "\\'"));
-			book.setDescription(book.getDescription().replaceAll("/", "\\/"));
-		}
+		escapeWhitespaceFrom(books);
 		
 		model.addAttribute("books", books);
 		
 		return "maintainbook";
 	}
-	
+
 	@RequestMapping(value = "/maintainbook/{id}", method = RequestMethod.GET)
 	public String removeBookById(@PathVariable Long id, final Locale locale, final Model model) {
 		bookService.removeBookById(id);
@@ -81,7 +80,7 @@ public class BookController {
 			return "updatebook";
 		}
 		
-		bookService.updateBook(book);
+		bookService.updateBook(escapeInputIn(book));
 		
 		return "redirect:/maintainbook";
 	}
@@ -104,7 +103,7 @@ public class BookController {
 			return "addbook";
 		}
 		
-		bookService.save(book);
+		bookService.save(escapeInputIn(book));
 		
 		return "books";
 	}
@@ -126,8 +125,26 @@ public class BookController {
 		return result;
 	}
 	
+	private void escapeWhitespaceFrom(List<Book> books) {
+		for (Book book : books) {
+			book.setDescription(book.getDescription().replaceAll("\n", " "));
+			book.setDescription(book.getDescription().replaceAll("\r", ""));
+			book.setDescription(book.getDescription().replaceAll("'", "\\'"));
+			book.setDescription(book.getDescription().replaceAll("/", "\\/"));
+		}
+	}
+	
+	private Book escapeInputIn(Book book) {
+		book.setAuthor(book.getAuthor().replaceAll(START_TAG, "&lt;").replaceAll(END_TAG, "&gt;"));
+		book.setDescription(book.getDescription().replaceAll(START_TAG, "&lt;").replaceAll(END_TAG, "&gt;"));
+		book.setIsbn(book.getIsbn().replaceAll(START_TAG, "&lt;").replaceAll(END_TAG, "&gt;"));
+		book.setTitle(book.getTitle().replaceAll(START_TAG, "&lt;").replaceAll(END_TAG, "&gt;"));
+		
+		return book;
+	}
+	
 	private String getDate(final Locale locale) {
-		String actualDate = new SimpleDateFormat("EEE MMM d, yyyy", Locale.ENGLISH).format(new Date());
+		String actualDate = new SimpleDateFormat(ACTUAL_DATE_FORMAT, Locale.ENGLISH).format(new Date());
 		
 		return actualDate;
 	}

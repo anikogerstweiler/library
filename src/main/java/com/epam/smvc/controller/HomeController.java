@@ -23,6 +23,11 @@ import com.epam.smvc.service.UserService;
 @Controller
 public class HomeController {
 	
+	private static final String ACTUAL_DATE_FORMAT = "EEE MMM d, yyyy";
+	private static final String END_TAG = ">";
+	private static final String START_TAG = "<";
+	private static final String ROLE_USER = "ROLE_USER";
+	
 	@Autowired
 	UserService userService;
 	
@@ -52,17 +57,17 @@ public class HomeController {
 		BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
 		
 		User user = new User();
-		user.setUsername(userForm.getUsername());
-		user.setFirstname(userForm.getFirstName());
-		user.setLastname(userForm.getLastName());
+		user.setUsername(userForm.getUsername().replaceAll(START_TAG, "&lt;").replaceAll(END_TAG, "&gt;"));
+		user.setFirstname(userForm.getFirstName().replaceAll(START_TAG, "&lt;").replaceAll(END_TAG, "&gt;"));
+		user.setLastname(userForm.getLastName().replaceAll(START_TAG, "&lt;").replaceAll(END_TAG, "&gt;"));
 		user.setPassword(encoder.encode(userForm.getPwd()));
 		user.setEnabled(true);
 		
 		userService.save(user);
 		
 		Authority authority = new Authority();
-		authority.setUsername(userForm.getUsername());
-		authority.setAuthority("ROLE_USER");
+		authority.setUsername(userForm.getUsername().replaceAll(START_TAG, "&lt;").replaceAll(END_TAG, "&gt;"));
+		authority.setAuthority(ROLE_USER);
 		
 		userService.save(authority);
 		
@@ -75,7 +80,7 @@ public class HomeController {
 	}
 	
 	private String getDate(final Locale locale) {
-		String actualDate = new SimpleDateFormat("EEE MMM d, yyyy", Locale.ENGLISH).format(new Date());
+		String actualDate = new SimpleDateFormat(ACTUAL_DATE_FORMAT, Locale.ENGLISH).format(new Date());
 		
 		return actualDate;
 	}

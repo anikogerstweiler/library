@@ -7,7 +7,7 @@
 	<title>Add Book</title>
 	<link rel="stylesheet" type="text/css" href="resources/reset.css">
 	<link rel="stylesheet" type="text/css" href="resources/library.css">
-	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"> 
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 </head>
 <body>
 	<section id="menu">
@@ -25,7 +25,7 @@
 						<div>
 							<label for="title" class="inputElement">Title</label>
 							<form:input type="text" id="title" class="inputElement ${not empty status.getFieldError('title') ? 'error' : '' }" 
-								name="title" path="title" autofocus="autofocus"/>
+								name="title" path="title" autofocus="autofocus" />
 							<form:errors path="title" cssClass="errorMessage"/>
 						
 							<label for="author" class="inputElement">Author</label>
