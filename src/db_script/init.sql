@@ -5,7 +5,7 @@ drop table if exists books;
 
 create table users (
 username varchar(50) not null primary key,
-password varchar (60) not null,
+password varchar (100) not null,
 enabled boolean not null,
 firstname varchar(50) not null,
 lastname varchar(50) not null);
@@ -57,6 +57,12 @@ insert into books(author, title, year, isbn, description) values("Russell Miles"
 development using AspectJ, the different constructs that the AspectJ language adds to Java, and aspect-oriented design patterns. 
 The 109 solutions capture join points on methods, class construction, and attributes, examine the different ways advice can be specified, 
 and show how to implement creational, structural, and behavioral design patterns.");
+insert into books(author, title, year, isbn, description) values("Danny Goodman", "Head First HTML with CSS & XHTML", 2005, "059610197X",
+"Paper Copy Tired of reading HTML books that only make sense after you're an expert? Then it's about time you picked up Head First HTML with CSS & XHTML and really learned HTML. You want to learn HTML so you can finally create those web pages you've always wanted, so you can communicate more effectively with friends, family, fans, and fanatic customers. ");
+insert into books(author, title, year, isbn, description) values("Joshua Bloch", "Effective Java: Programming Language Guide", 2001, "0201310058",
+"Having worked as a platform libraries architect for Java since 1996, Bloch shares with programmers what he has learned about what works, what does not, and how to use the language and its libraries to best effect. He presents 57 specific hints in sections on creating and destroying objects, methods common to all objects, classes and interfaces, substitutes for C constructs, methods, general programming, exceptions, threads, and serialization.");
+insert into books(author, title, year, isbn, description) values("Jason Hunter", "Java Servlet Programming, 2nd Edition", 2001, "0596000405",
+"Java Servlet Programming covers everything Java developers need to know to write effective servlets. It explains the servlet lifecycle, showing how to use servlets to maintain state information effortlessly. It also describes how to serve dynamic web content, including both HTML pages and multimedia data, and it explores more advanced topics like integrated session tracking, efficient database connectivity using JDBC, applet-servlet communicaton, interservlet communication.");
 
 insert into hiredbooks (username, bookid, fromdate, todate) values("user", 1, '2014-08-29', '2014-09-29');
 insert into hiredbooks (username, bookid, fromdate, todate) values("user", 2, '2014-08-29', '2014-09-29');
