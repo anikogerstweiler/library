@@ -5,7 +5,7 @@ function showDetails(id, description) {
 	}
 	
 	if (visible["id"  + id] == false) {
-		document.getElementById(id).innerHTML = "<td colspan=\"5\"><p>" + description + "</p></td>"; 
+		document.getElementById(id).innerHTML = "<td colspan=\"5\" class=\"fullsize\"><h4>About the book</h4><p>" + description + "</p></td>"; 
 		visible["id"  + id] = true;
 	} else {
 		document.getElementById(id).innerHTML = "";
@@ -15,13 +15,4 @@ function showDetails(id, description) {
 
 function addElement(key, value) {
 	visible[key] = value;
-}
-
-function popitup(url) {
-	newwindow = window.open(url,'name','directories=no,titlebar=no,toolbar=no,location=no,status=no,menubar=no,scrollbars=no,resizable=no,width=400,height=350');
-	
-	if (window.focus) {
-		newwindow.focus()
-	}
-	return false;
 }

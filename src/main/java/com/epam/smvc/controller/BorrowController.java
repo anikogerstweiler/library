@@ -5,6 +5,7 @@ import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.GregorianCalendar;
+import java.util.List;
 import java.util.Locale;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,6 +19,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.epam.smvc.form.LoanForm;
+import com.epam.smvc.model.Book;
 import com.epam.smvc.model.HiredBook;
 import com.epam.smvc.service.BookService;
 import com.epam.smvc.service.HiredBookService;
@@ -25,6 +27,8 @@ import com.epam.smvc.service.HiredBookService;
 @Controller
 public class BorrowController {
 
+	private static final int MAX_LENGTH = 35;
+	
 	@Autowired
 	private HiredBookService hiredBookService;
 	
@@ -66,7 +70,9 @@ public class BorrowController {
 	public String listLoanedBooks(final Locale locale, final Model model) {
 		setActualDate(locale, model);
 		
-		model.addAttribute("mybooks", hiredBookService.listBooksByUser(SecurityContextHolder.getContext().getAuthentication().getName()));
+		List<HiredBook> booksByUser = hiredBookService.listBooksByUser(SecurityContextHolder.getContext().getAuthentication().getName());
+		
+		model.addAttribute("mybooks", booksByUser);
 		
 		return "loanedbooks";
 	}

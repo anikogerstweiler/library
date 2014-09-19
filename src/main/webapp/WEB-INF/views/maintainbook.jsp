@@ -20,25 +20,24 @@
 			</div>
 			
 			<div class="loanedBooks">
-				<table class="hiredbooks">
+				<table class="hiredbooks" id="maintained">
 					<thead>
 						<tr>
-							<td>Title</td>
-							<td>Author</td>
+							<td class="fixed">Title</td>
+							<td class="fixed">Author</td>
 							<td>Year</td>
-							<td>ISBN</td>
+							<td class="fixed">ISBN</td>
 							<td></td>
 						</tr>
 					</thead>
 					<tbody>
 						<c:forEach var="book" items="${books}">
-							<tr>
-								<td><abbr title="${book.title}">${book.shortTitle}</abbr></td>
-								<td><abbr title="${book.author}">${book.shortAuthor}</abbr></td>
+							<tr class="clickablerow" onclick="showDetails(${book.id}, '${book.description}')">
+								<td class="fixed"><abbr title="${book.title}">${book.shortTitle}</abbr></td>
+								<td class="fixed"><abbr title="${book.author}">${book.shortAuthor}</abbr></td>
 								<td>${book.year}</td>
-								<td>${book.isbn}</td>
+								<td class="fixed">${book.isbn}</td>
 								<td>
-									<img src="<c:url value="/resources/details.png"/>" class="crudImage crudIcon" onclick="showDetails(${book.id}, '${book.description}')">
 									<a href="<c:url value="/maintainbook/${book.id}"/>" class="crudIcon">
 										<img src="<c:url value="/resources/delete.png"/>" class="crudImage">
 									</a>
@@ -49,7 +48,7 @@
 							</tr>
 							
 							<!-- The description loads here -->
-							<tr id="${book.id}"></tr>
+							<tr id="${book.id}" class="descriptionrow"></tr>
 						</c:forEach>
 					</tbody>
 				</table>
