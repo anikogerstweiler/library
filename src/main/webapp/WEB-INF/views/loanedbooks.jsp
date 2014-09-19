@@ -19,13 +19,13 @@
 			</div>
 			
 			<div class="loanedBooks">
-				<table class="hiredbooks">
+				<table class="hiredbooks" id="hiredbooks">
 					<thead>
 						<tr>
-							<td>Title</td>
-							<td>Author</td>
-							<td>From</td>
-							<td>To</td>
+							<td class="fixed">Title</td>
+							<td class="fixed">Author</td>
+							<td class="fixed">From</td>
+							<td class="fixed">To</td>
 						</tr>
 					</thead>
 					<tbody>
@@ -33,8 +33,8 @@
 							<c:set var="hiredbook" value="${books[0]}"/>
 							<c:set var="book" value="${books[1]}"/>
 							<tr>
-								<td>${book.title}</td>
-								<td>${book.author}</td>
+								<td class="fixed">${book.title}</td>
+								<td class="fixed">${book.author}</td>
 								<td>${hiredbook.fromdate}</td>
 								<td>${hiredbook.todate}</td>
 							</tr>
