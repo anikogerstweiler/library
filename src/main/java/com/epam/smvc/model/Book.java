@@ -40,7 +40,6 @@ public class Book {
 	private String isbn;
 	
 	@Column(name = "description")
-	@Size(min=0, max=50, message="The description must between 0 and 50 characters")
 	private String description;
 	
 	@Transient
