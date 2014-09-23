@@ -19,7 +19,6 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.epam.smvc.form.LoanForm;
-import com.epam.smvc.model.Book;
 import com.epam.smvc.model.HiredBook;
 import com.epam.smvc.service.BookService;
 import com.epam.smvc.service.HiredBookService;
@@ -27,8 +26,6 @@ import com.epam.smvc.service.HiredBookService;
 @Controller
 public class BorrowController {
 
-	private static final int MAX_LENGTH = 35;
-	
 	@Autowired
 	private HiredBookService hiredBookService;
 	

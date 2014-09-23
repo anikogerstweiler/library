@@ -23,7 +23,6 @@
 					<thead>
 						<tr>
 							<td class="fixed">Title</td>
-							<td class="fixed">Author</td>
 							<td class="fixed">From</td>
 							<td class="fixed">To</td>
 						</tr>
@@ -34,7 +33,6 @@
 							<c:set var="book" value="${books[1]}"/>
 							<tr>
 								<td class="fixed">${book.title}</td>
-								<td class="fixed">${book.author}</td>
 								<td>${hiredbook.fromdate}</td>
 								<td>${hiredbook.todate}</td>
 							</tr>

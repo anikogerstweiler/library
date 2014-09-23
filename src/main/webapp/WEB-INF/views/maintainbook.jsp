@@ -32,11 +32,11 @@
 					</thead>
 					<tbody>
 						<c:forEach var="book" items="${books}">
-							<tr class="clickablerow" onclick="showDetails(${book.id}, '${book.description}')">
-								<td class="fixed"><abbr title="${book.title}">${book.shortTitle}</abbr></td>
-								<td class="fixed"><abbr title="${book.author}">${book.shortAuthor}</abbr></td>
-								<td>${book.year}</td>
-								<td class="fixed">${book.isbn}</td>
+							<tr class="clickablerow">
+								<td class="fixed" onclick="showDetails(${book.id}, '${book.description}')"><abbr title="${book.title}">${book.shortTitle}</abbr></td>
+								<td class="fixed" onclick="showDetails(${book.id}, '${book.description}')"><abbr title="${book.author}">${book.shortAuthor}</abbr></td>
+								<td onclick="showDetails(${book.id}, '${book.description}')">${book.year}</td>
+								<td class="fixed" onclick="showDetails(${book.id}, '${book.description}')">${book.isbn}</td>
 								<td>
 									<a href="<c:url value="/maintainbook/${book.id}"/>" class="crudIcon">
 										<img src="<c:url value="/resources/delete.png"/>" class="crudImage">

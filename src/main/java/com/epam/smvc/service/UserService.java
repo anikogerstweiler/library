@@ -8,4 +8,6 @@ public interface UserService {
 	void save(User user);
 
 	void save(Authority auth);
+	
+	User getUserByUserName(String username);
 }

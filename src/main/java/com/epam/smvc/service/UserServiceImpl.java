@@ -62,4 +62,9 @@ public class UserServiceImpl implements UserService { //UserDetailsService
         return authorities;
     }
 
+	@Override
+	public User getUserByUserName(String username) {
+		return userRepository.findByUsername(username);
+	}
+
 }
