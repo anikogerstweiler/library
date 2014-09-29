@@ -2,24 +2,12 @@
 <%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags"%>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 
-<html>
-<head>
-	<title>Books</title>
-	<link rel="stylesheet" type="text/css" href="resources/reset.css">
-	<link rel="stylesheet" type="text/css" href="resources/library.css">
-	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"> 
-</head>
-<body>
-	<section id="menu">
-		<%@ include file="menu.jspf"%>
-	</section>
+<c:import url="base.jsp">
+	<c:param name="title">
+		Books
+	</c:param>
 	
-	<main class="container">
-		<section id="books">
-			<div class="header">
-				<h1>Loan Book</h1>
-			</div>
-			
+	<c:param name="content">
 			<div class="loanedBooks">
 				<form:form role="form" method="POST" action="/smvc/loan" commandName="loanForm">
 					<fieldset id="loan">
@@ -55,12 +43,6 @@
 						</div>
 					</fieldset>
 				</form:form>
-			</div>
-			
-			<div class="footer">
-				<small id="footer">${today}</small>
-			</div>
-		</section>
-	</main>
-</body>
-</html>
+			</div> 
+	</c:param>
+</c:import>
