@@ -2,31 +2,19 @@
 <%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 
-<html>
-<head>
-	<title>Register</title>
-	<link rel="stylesheet" type="text/css" href="resources/reset.css">
-    <link rel="stylesheet" type="text/css" href="resources/library.css">
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"> 
-</head>
-<body>
-	<section id="menu">
-		<%@ include file="menu.jspf"%>
-	</section>
-	<main class="container">
+<c:import url="base.jsp">
+	<c:param name="title">
+		Register
+	</c:param>
+	
+	<c:param name="content">
 		<section id="register">
-			<div class="header">
-				<h1>Register</h1>
-			</div>
-			
 			<div class="bookList" id="reg">
 				<h3>Please enter your personal information to continue.</h3>
 				<small>If you have previously registered with us, <a href="/smvc/login">click here</a></small>
 				<form:form role="form" method="POST" action="/smvc/register" commandName="user" >
 					<fieldset>
 						<div>
-<%-- 							<form:input type="hidden" value="1" name="enabled" path="enabled" /> --%>
-							
 							<label for="username" class="inputElement">Username</label>
 							<form:input type="text" id="username" class="inputElement ${not empty status.getFieldError('username') ? 'error' : '' }" 
 								name="username" path="username" placeholder=" Username"/>
@@ -50,13 +38,7 @@
 						</div>
 					</fieldset>
 				</form:form>
-			</div>
-			
-			<div class="footer">
-				<small id="footer">${today}</small>
-			</div>
+			</div>   
 		</section>
-	</main>
-
-</body>
-</html>
+	</c:param>
+</c:import>
