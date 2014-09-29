@@ -43,7 +43,7 @@ public class BorrowController {
 		model.addAttribute("bookAvailable", bookAvailable);
 		model.addAttribute("available", available);
 		
-		String actualDate = new SimpleDateFormat("yyyy-MM-dd", Locale.ENGLISH).format(new Date());
+		String actualDate = new SimpleDateFormat("yyyy-MM-dd", locale).format(new Date());
 		model.addAttribute("date", actualDate);
 		
 		return "loan";
@@ -113,7 +113,7 @@ public class BorrowController {
 	}
 	
 	private String getDate(final Locale locale) {
-		String actualDate = new SimpleDateFormat("EEE MMM d, yyyy", Locale.ENGLISH).format(new Date());
+		String actualDate = new SimpleDateFormat("EEE MMM d, yyyy", locale).format(new Date());
 		
 		return actualDate;
 	}

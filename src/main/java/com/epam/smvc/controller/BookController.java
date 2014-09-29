@@ -65,8 +65,8 @@ public class BookController {
 		return "redirect:/maintainbook";
 	}
 	
-	@RequestMapping(value = "/updatebook", method = RequestMethod.GET)
-	public String preInitUpdate(@RequestParam Long id, final Locale locale, final Model model) {
+	@RequestMapping(value = "/updatebook/{id}", method = RequestMethod.GET)
+	public String preInitUpdate(@PathVariable Long id, final Locale locale, final Model model) {
 		setActualDate(locale, model);
 		Book book = bookService.find(id);
 		model.addAttribute("book", book);
@@ -168,7 +168,7 @@ public class BookController {
 	}
 
 	private String getDate(final Locale locale) {
-		String actualDate = new SimpleDateFormat(ACTUAL_DATE_FORMAT, Locale.ENGLISH).format(new Date());
+		String actualDate = new SimpleDateFormat(ACTUAL_DATE_FORMAT, locale).format(new Date());
 		
 		return actualDate;
 	}

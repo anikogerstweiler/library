@@ -46,7 +46,7 @@
 								<a href="<c:url value="/maintainbook/${book.id}"/>" class="crudIcon">
 									<img src="<c:url value="/resources/delete.png"/>" class="crudImage">
 								</a>
-								<a href="<c:url value="/updatebook?id=${book.id}"/>" class="crudIcon">
+								<a href="<c:url value="/updatebook/${book.id}"/>" class="crudIcon">
 									<img src="<c:url value="/resources/edit.png"/>" class="crudImage">
 								</a>
 							</td>

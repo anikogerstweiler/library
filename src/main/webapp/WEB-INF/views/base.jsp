@@ -4,8 +4,8 @@
 <html>
 <head>
 	<title>Library</title>
-	<link rel="stylesheet" type="text/css" href="resources/reset.css">
-	<link rel="stylesheet" type="text/css" href="resources/library.css">
+	<link rel="stylesheet" type="text/css" href="/smvc/resources/reset.css">
+	<link rel="stylesheet" type="text/css" href="/smvc/resources/library.css">
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"> 
 </head>
 <body>

@@ -34,8 +34,8 @@
 									</span>
 								</div>
 							</fieldset>
+							<hr class="bookline">
 						</li>
-						<hr class="bookline">
 					</ul>
 				</div>
 				<div class="pagination">
