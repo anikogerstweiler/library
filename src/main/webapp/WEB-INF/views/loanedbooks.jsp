@@ -1,24 +1,13 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags"%>
-<html>
-<head>
-	<title>My Books</title>
-	<link rel="stylesheet" type="text/css" href="resources/reset.css">
-	<link rel="stylesheet" type="text/css" href="resources/library.css">
-	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"> 
-</head>
-<body>
-	<section id="menu">
-		<%@ include file="menu.jspf" %>
-	</section>
+
+<c:import url="base.jsp">
+	<c:param name="title">
+		My Books
+	</c:param>
 	
-	<main class="container">
-		<section id="books">
-			<div class="header">
-				<h1>Loaned Books</h1>
-			</div>
-			
-			<div class="loanedBooks">
+	<c:param name="content">
+		<div class="loanedBooks">
 				<table class="hiredbooks" id="hiredbooks">
 					<thead>
 						<tr>
@@ -40,11 +29,5 @@
 					</tbody>
 				</table>
 			</div>
-			
-			<div class="footer">
-				<small id="footer">${today}</small>
-			</div>
-		</section>
-	</main>
-</body>
-</html>
+	</c:param>
+</c:import>
