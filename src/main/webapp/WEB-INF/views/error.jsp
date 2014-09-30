@@ -8,11 +8,11 @@
 	</c:param>
 	
 	<c:param name="content">
-			<section id="login">
-			<div class="booklist" id="noPermissionMessage">
+			<section id="login" class="booklist">
+<!-- 			<div class="booklist" id="noPermissionMessage"> -->
 				<h3>Sorry, you have no permission to watch this page!</h3>
 	            <img alt="bookshelf" src="<c:url value="/resources/bookshelf.png"/>" >
-            </div>   
+<!--             </div>    -->
 		</section>
 	</c:param>
 </c:import>
