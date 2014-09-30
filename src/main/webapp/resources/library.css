@@ -19,6 +19,7 @@ section {
 	opacity: 0.8;
 	max-height: 878px;
 	display: block;
+	position: relative;
 }
 
 .welcome {
@@ -49,6 +50,8 @@ section {
 #menu div {
 	margin-left: 10px;
 	padding-top: 5px;
+	padding-left: 10px;
+	height: 31px;
 }
 
 .menulink {
@@ -61,7 +64,7 @@ section {
 
 .selectedMenu {
 	background-color: #E3FFE5;
-	width: 150px;
+	width: 130px;
 	height: 31px;
 	display: block; 
 }
@@ -189,6 +192,10 @@ fieldset {
 	height: 180px;
 }
 
+fieldset p {
+	height: 70px;
+}
+
 .bookline {
 	padding-right: 5px;
 	width: 95%;
@@ -301,6 +308,9 @@ em {
 .pagination {
 	margin: auto;
 	width: 200px;
+	position: absolute;
+	bottom: 0;
+	right: 150;
 }
 
 .pagination ul {

@@ -43,17 +43,12 @@ public class JpaHiredBookRepository extends JpaGenericRepository implements Hire
 	
 	private String isBookAvailable(Date from, Date to, Long id) {
 		TypedQuery<HiredBook> query = entityManager.createQuery(
-				"Select h from HiredBook h where h.bookid = :id and ((h.fromdate between :from and :to) or "
+				"Select h from HiredBook h where h.bookid = :id and "
 				+ "(h.todate between :from and :to)) order by h.todate", HiredBook.class);
-		String fromDate = new SimpleDateFormat("yyyy-MM-dd", Locale.ENGLISH).format(from);
-		String toDate = new SimpleDateFormat("yyyy-MM-dd", Locale.ENGLISH).format(to);
-		System.out.println("FROM " + from + " TO " + to);
-		System.out.println("QFROM " + fromDate + " QTO " + toDate);
 		
 		query.setParameter("from", from)
 			 .setParameter("to", to)
 			 .setParameter("id", id);
-		
 		
 		List<HiredBook> result = query.getResultList();
 		
