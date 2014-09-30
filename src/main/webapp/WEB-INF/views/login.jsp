@@ -8,8 +8,8 @@
 	</c:param>
 	
 	<c:param name="content">
-		<section id="login">
-			<form action="j_spring_security_check" name="f" method="post">
+<%-- 		<section id="login"> --%>
+			<form action="j_spring_security_check" name="f" method="post" id="login">
 				<div class="column">
 					<c:if test="${error == true}">
 						<label class="errorMessage">Wrong user name or password</label>
@@ -25,6 +25,6 @@
 	                </label>
                 </div>
 			</form>   
-		</section>
+<%-- 		</section> --%>
 	</c:param>
 </c:import>

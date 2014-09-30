@@ -8,36 +8,34 @@
 	</c:param>
 	
 	<c:param name="content">
-			<section id="books" ng-controller="bookCtrl" ng-app="bookApp">
-				<div class="bookList">
-					<input type="text" id="search" placeholder=" Search for author, title" ng-model="search">
-					<ul ng-repeat="book in filteredBooks = (books | filter:search) | startFrom:(currentPage-1)*entryLimit | limitTo:entryLimit">
-						<li>
-							<fieldset>
-								<h2>{{book.title}}</h2>
-								<small id="author">{{book.author}}</small>
-								<p>{{book.description}}</p>
+			<section id="books" ng-controller="bookCtrl" class="bookList">
+				<input type="text" id="search" placeholder=" Search for author, title" ng-model="search">
+				<ul ng-repeat="book in filteredBooks = (books | filter:search) | startFrom:(currentPage-1)*entryLimit | limitTo:entryLimit">
+					<li>
+						<fieldset>
+							<h2>{{book.title}}</h2>
+							<small id="author">{{book.author}}</small>
+							<p>{{book.description}}</p>
+							
+							<div class="attributes">
+								<span class="attribute">
+									<em>Publication year: </em> {{book.year}}
+								</span>
 								
-								<div class="attributes">
-									<span class="attribute">
-										<em>Publication year: </em> {{book.year}}
-									</span>
-									
-									<span class="attribute">
-										<em>ISBN: </em> {{book.isbn}}
-									</span>
-									
-									<span class="attribute">
-										<sec:authorize access="hasRole('ROLE_USER')">
-											<a href="/smvc/loan?id={{book.id}}" class="borrow"><em>Loan</em></a>
-										</sec:authorize>
-									</span>
-								</div>
-							</fieldset>
-							<hr class="bookline">
-						</li>
-					</ul>
-				</div>
+								<span class="attribute">
+									<em>ISBN: </em> {{book.isbn}}
+								</span>
+								
+								<span class="attribute">
+									<sec:authorize access="hasRole('ROLE_USER')">
+										<a href="/smvc/loan?id={{book.id}}" class="borrow"><em>Loan</em></a>
+									</sec:authorize>
+								</span>
+							</div>
+						</fieldset>
+						<hr class="bookline">
+					</li>
+				</ul>
 				<div class="pagination">
 					<pagination data-boundary-links="true" total-items="numberOfItems" num-pages="noOfPages"
 								ng-model="currentPage" max-size="maxSize" class="pagination"

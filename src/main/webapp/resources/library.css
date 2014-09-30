@@ -9,19 +9,19 @@ body {
 }
 
 .container {
-	width: 650px;
+	width: 830px;
+	height: 871px;
 	margin: auto;
 }
 
 section {
-	border-radius: 6px;
 	background-color: #DEDDD9;
 	opacity: 0.8;
 	max-height: 878px;
 	display: block;
 }
 
-#menu {
+.welcome {
 	width: auto;
 	margin-bottom: 10px;
 	color: white;
@@ -31,16 +31,55 @@ section {
 	border: 0px;
 	border-radius: 0px;
 	display: block;
+	height: 40px;
+}
+
+#menu {
+	width: 160px;;
+	font-family: 'minion';
+	font-size: 21px;
+	float: left;
+	min-height: 727px; 
+	max-height: 708px;
+	display: block;
+/* 	background-color: #E3FFE5; */
+	margin-right: 1px;
+}
+
+#menu div {
+	margin-left: 10px;
+	padding-top: 5px;
+}
+
+.menulink {
+	color: #555;
+	text-decoration: none;
+	list-style-type: none;
+/* 	margin-left: 10px; */
+/* 	margin-top: 20px; */
+}
+
+.selectedMenu {
+	background-color: #E3FFE5;
+	width: 150px;
+	height: 31px;
+	display: block; 
+}
+
+nav {
+	margin-top: 10px;
 }
 
 #login {
-	width: 650px;
+	width: auto;
+	height: 727px;
 	border-radius: 6px;
 }
 
 .column {
 	padding: 20px;
-	background-color: #E3FFE5;
+/* 	background-color: #E3FFE5; */
+	height: 685px;
 }
 
 h1 {
@@ -122,14 +161,6 @@ button {
 	cursor: pointer;
 }
 
-.menulink {
-	color: #E3FFE5;
-	text-decoration: none;
-	list-style-type: none;
-	margin: 0;
-	overflow: hidden;
-}
-
 .borrow {
 	font-family: 'minion';
 	color: #555;
@@ -138,7 +169,9 @@ button {
 
 li {
 	display: inline-block;
-	padding: 10px 5px;
+/* 	display: block; */
+	padding: 5px 5px;
+	margin-top: 5px;
 }
 
 small #author {
@@ -153,6 +186,7 @@ p {
 
 fieldset {
 	padding: 5px 15px;
+	height: 180px;
 }
 
 .bookline {
@@ -176,7 +210,7 @@ fieldset {
 .hiredbooks {
 	padding: 5px 10px;
 	width: 628px;
-	margin: 10px auto;
+	margin: 10px 10px;
 	text-align: center;
 }
 
@@ -202,7 +236,7 @@ tr:nth-child(odd) td:first-child {
 	width: 240px;	
 }
 
-tbody tr:nth-child(odd), #addBook {
+tbody tr:nth-child(odd) {
 	background-color:#E3FFE5;
 }
 
@@ -252,14 +286,15 @@ em {
 }
 
 .loanedBooks {
-	min-height: 731px;
-	max-height: 748px;
+	min-height: 727px;
+	max-height: 727px;
 	overflow-y: auto;
 }
 
 .bookList {
-	min-height: 695px;
-	max-height: 722px;
+	height: 727px;
+/* 	max-height: 722px; */
+	max-height: 750px;
 	overflow-y: auto;
 }
 
@@ -307,10 +342,11 @@ em {
 	margin-right: 20px;
 	color: #E3FFE5;
 	display: inline;
+	padding: 5px;
 }
 
 #reg {
-	background-color: #E3FFE5;
+/* 	background-color: #E3FFE5; */
 	padding-left: 20px;	
 }
 
