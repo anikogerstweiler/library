@@ -79,6 +79,12 @@ nav {
 	border-radius: 6px;
 }
 
+.welcomeMsg {
+	width: 650px;
+	margin-left: auto;
+	margin-right: 0px;
+}
+
 .column {
 	padding: 20px;
 /* 	background-color: #E3FFE5; */
@@ -106,6 +112,13 @@ h3, h4 {
 
 h4 {
 	text-align: left;
+}
+
+h5 {
+	font-size: 16px;
+	line-height: 150%;
+	background-color: #E3FFE5;
+	padding: 5px;
 }
 
 .header {
@@ -296,6 +309,7 @@ em {
 	min-height: 727px;
 	max-height: 727px;
 	overflow-y: auto;
+	width: auto;
 }
 
 .bookList {

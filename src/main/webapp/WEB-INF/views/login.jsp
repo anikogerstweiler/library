@@ -10,7 +10,13 @@
 	<c:param name="content">
 <%-- 		<section id="login"> --%>
 			<form action="j_spring_security_check" name="f" method="post" id="login">
+				
 				<div class="column">
+					<div class="welcomeMsg">
+						<h3>WELCOME TO THE EPAM LIBRARY</h3>
+						<h5>View your Personal Record by logging in with your username and password. <br> 
+						You can then loan, check what you have out on loan and any overdues and reservations.</h5>
+					</div>
 					<c:if test="${error == true}">
 						<label class="errorMessage">Wrong user name or password</label>
 					</c:if>
