@@ -43,7 +43,6 @@ section {
 	min-height: 727px; 
 	max-height: 708px;
 	display: block;
-/* 	background-color: #E3FFE5; */
 	margin-right: 1px;
 }
 
@@ -58,12 +57,18 @@ section {
 	color: #555;
 	text-decoration: none;
 	list-style-type: none;
-/* 	margin-left: 10px; */
-/* 	margin-top: 20px; */
+}
+
+.menuItem:hover {
+	font-weight: bold;
+	width: 130px;
+	height: 31px;
+	display: block; 
 }
 
 .selectedMenu {
-	background-color: #E3FFE5;
+	background-image: url("tg_arrow.png");
+	background-size: 100% 100%;
 	width: 130px;
 	height: 31px;
 	display: block; 
@@ -87,7 +92,6 @@ nav {
 
 .column {
 	padding: 20px;
-/* 	background-color: #E3FFE5; */
 	height: 685px;
 }
 
@@ -185,7 +189,6 @@ button {
 
 li {
 	display: inline-block;
-/* 	display: block; */
 	padding: 5px 5px;
 	margin-top: 5px;
 }
@@ -314,7 +317,6 @@ em {
 
 .bookList {
 	height: 727px;
-/* 	max-height: 722px; */
 	max-height: 750px;
 	overflow-y: auto;
 }
@@ -370,7 +372,6 @@ em {
 }
 
 #reg {
-/* 	background-color: #E3FFE5; */
 	padding-left: 20px;	
 }
 

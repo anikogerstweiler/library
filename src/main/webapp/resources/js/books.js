@@ -43,7 +43,6 @@ bookApp.controller('bookCtrl', function($scope, $http, $timeout, filterFilter) {
 
 bookApp.controller('MenuCtrl', ['$scope','$location','$rootElement', function($scope, $location, $rootElement) {
 	$scope.getClass = function(path) {
-		var n = $location.absUrl().indexOf(path);
 		if ($location.absUrl().indexOf(path) != -1) {
 			return "selectedMenu"
 		} else {
